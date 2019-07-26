@@ -51,6 +51,7 @@ List<double> calculateGridLines(List<LayoutUnit> _list, double space) {
     }
   }
 
+  
   //We now check if MinMax have fraction as MaxUnit and if they have then we check that
   //they do exceed or are equal to our MinUnit
   for (int _i = 0; _i < _list.length; _i++) {
@@ -263,8 +264,8 @@ double getDependentLineValue(
   double _value = 0.0;
 
   _value =
-      _listOfDoubles[_layoutDependent.line] * _layoutDependent.multiplicator;
-
+      (_listOfDoubles[_layoutDependent.line] - _listOfDoubles[_layoutDependent.line - 1]) * _layoutDependent.multiplicator;
+  
   return _value;
 }
 

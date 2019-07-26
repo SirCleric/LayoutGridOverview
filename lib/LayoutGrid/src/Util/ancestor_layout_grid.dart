@@ -106,6 +106,7 @@ class AncestorLayoutGrid extends StatelessWidget {
   }
 
   void updateGrid(BoxConstraints constraints, Axis scrollDirection) {
+    
     //Dependent Unit depends on some other gridLine of the opposite type (ex. rows => cols) depending on the scrolling passed
     //
     //The tought process goes like this, if we have a vertical scrolling then the width of the stack will be fixed to the width of the page,

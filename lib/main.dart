@@ -33,22 +33,25 @@ class MyHomePage extends StatelessWidget {
     // than having to individually change instances of widgets.
     return Scaffold(
 
-      backgroundColor: Colors.deepPurple.shade600,
+      backgroundColor: Colors.deepPurple.shade800,
 
       appBar: AppBar(
-        title: Text(title),
-        backgroundColor: Colors.deepPurple.shade800,
+        title: Text(title, style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 32),),
+        backgroundColor: Colors.deepPurple.shade900,
         elevation: 0.0,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        
         child: LayoutGrid(
           isAncestor: true,
 
-          columns: [LayoutFraction(fraction: 1), LayoutPixel(pixels: 400)],
+          columns: [LayoutMinMax(minUnit: LayoutPixel(pixels: 350), maxUnit: LayoutFraction(fraction: 1)),
+                    LayoutMinMax(minUnit: LayoutPixel(pixels: 200), maxUnit: LayoutPixel(pixels: 400))],
+
           rows: [
             LayoutPixel(pixels: 100),
-            LayoutDependent(line: 1, multiplicator: 1),
+            LayoutDependent(line: 2, multiplicator: 1),
             LayoutPixel(pixels: 100),
             LayoutDependent(line: 1, multiplicator: 1),
             LayoutPixel(pixels: 100),
@@ -58,7 +61,7 @@ class MyHomePage extends StatelessWidget {
           ],
 
           areas: [["...","..."],
-                  ["ThisIs","..."],
+                  ["ThisIs","NestedLayoutGrid"],
                   ["...","..."],
                   ["DivideIt","..."],
                   ["...","..."],
@@ -66,7 +69,8 @@ class MyHomePage extends StatelessWidget {
                   ["...","..."],
                   ["AssignWidgets","..."]],
 
-          couples: [LayoutGridCouple(widget: ThisIs(),name: "ThisIs",sizeKey: "generic"),],
+          couples: [LayoutGridCouple(widget: ThisIs(),name: "ThisIs",sizeKey: "generic"),
+                    LayoutGridCouple(widget: ExampleOfLayoutGrid(),name: "NestedLayoutGrid",sizeKey: "nested")],
         ),
       ),
     );
@@ -90,9 +94,44 @@ class ThisIs extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: <Widget>[
-          Text("This is a basic LayoutGrid", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 48),),
-          Text("Created with a width and height of 400px", style: TextStyle(color: Colors.white, fontWeight: FontWeight.normal, fontSize: 24),)
+          Text("This is a basic LayoutGrid", style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 48),),
+          Text("Created with a width and height of 400px", style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w500, fontSize: 42),)
         ],
+      ),
+    );
+  }
+}
+
+class ExampleOfLayoutGrid extends StatelessWidget {
+
+  final String id = "nested";
+
+  @override
+  Widget build(BuildContext context) {
+
+    final InheritedSizeModel sizeModel = InheritedSizeModel.of(context, sizeKey: id);
+
+    return Container(
+
+      width: sizeModel.getWidth(id),
+      height: sizeModel.getHeight(id),
+
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.white,
+          width: 2.5
+        ),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+
+      child: LayoutGrid(
+        width: sizeModel.getWidth(id),
+        height: sizeModel.getHeight(id),
+
+        columns: [LayoutPixel()],
+        rows: [LayoutPixel()],
+
+        couples: [],
       ),
     );
   }

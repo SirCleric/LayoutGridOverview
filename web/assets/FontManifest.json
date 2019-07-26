@@ -1,0 +1,39 @@
+[
+    {
+        "family": "MaterialIcons",
+        "fonts": [
+            {
+                "asset": "https://fonts.gstatic.com/s/materialicons/v42/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2"
+            }
+        ]
+    },
+    {
+        "family": "ostrich",
+        "fonts": [
+            {
+                "asset": "./ostrich-sans-black.ttf",
+                "weight": 700
+            },
+            {
+                "asset": "./ostrich-sans-dashed.ttf",
+                "weight": 600
+            },
+            {
+                "asset": "./ostrich-sans-light.ttf",
+                "weight": 300
+            },
+            {
+                "asset": "./ostrich-sans-rounded.ttf",
+                "weight": 500
+            },
+            {
+                "asset": "./ostrich-sans-regular.ttf",
+                "weight": 400
+            },
+            {
+                "asset": "./ostrich-sans-inline-regular.ttf",
+                "weight": 200
+            }
+        ]
+    }
+]

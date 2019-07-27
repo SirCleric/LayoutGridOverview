@@ -28,6 +28,7 @@ define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animatio
       return src__widgets__inherited_model.InheritedModel.inheritFrom(LayoutGrid__src__Util__inherited_size_model.InheritedSizeModel, context, {aspect: sizeKey});
     }
     updateSize(sizeKey, size) {
+      core.print(dart.str(sizeKey) + " " + dart.str(size));
       this[_sizeMap][$_set](sizeKey, size);
     }
     getWidth(sizeKey) {
@@ -61,7 +62,7 @@ define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animatio
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/Util/inherited_size_model", {
     "package:layout_grid_overview/LayoutGrid/src/Util/inherited_size_model.dart": LayoutGrid__src__Util__inherited_size_model
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/inherited_size_model.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;uBAc6C;;AACzC,0BAAQ,gBAAY,AAAI,GAAD;IACzB;gCAIuB,KAAiB;;;AACtC,YAA4C,WAApC,AAAS,6BAAY,YAAY,mBACpC,AAAQ,sBAAC,YAAY,GAAK,AAAI,AAAQ,GAAT,kBAAU,YAAY;IAC1D;cAE0C;UAAiB;AACzD,YAAsB,0HAAgC,OAAO,WACjD,OAAO;IACrB;eAGuB,SAAc;MACnC,AAAQ,sBAAC,OAAO,EAAI,IAAI;IAC1B;aAGuB;AACrB,YAAO,AAAQ,AAAU,uBAAT,OAAO;IACzB;cAGwB;AACtB,YAAO,AAAQ,AAAU,uBAAT,OAAO;IACzB;;;QAjCmB;;IAHK,iBAAW;AAI9B,oGAAa,KAAK;;EAAC","file":"inherited_size_model.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/inherited_size_model.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;uBAc6C;;AACzC,0BAAQ,gBAAY,AAAI,GAAD;IACzB;gCAGoD,KAAiB;;;AACnE,YAA4C,WAApC,AAAS,6BAAY,YAAY,mBAAO,AAAQ,sBAAC,YAAY,GAAK,AAAI,AAAQ,GAAT,kBAAU,YAAY;IACrG;cAE0C;UAAiB;AACzD,YAAsB,0HAAgC,OAAO,WAAS,OAAO;IAC/E;eAGuB,SAAc;MACnC,WAAsB,SAAd,OAAO,mBAAE,IAAI;MACrB,AAAQ,sBAAC,OAAO,EAAI,IAAI;IAC1B;aAGuB;AACrB,YAAO,AAAQ,AAAU,uBAAT,OAAO;IACzB;cAGwB;AACtB,YAAO,AAAQ,AAAU,uBAAT,OAAO;IACzB;;;QA/BmB;;IAHK,iBAAW;AAI9B,oGAAa,KAAK;;EAAC","file":"inherited_size_model.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__Util__inherited_size_model: LayoutGrid__src__Util__inherited_size_model

@@ -5,134 +5,127 @@ import 'LayoutGrid/layout_grid.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
+      title: 'Layout grid overview',
 
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: InheritedSizeModel(child: MyHomePage(title: 'Layout grid overview')),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
   @override
   Widget build(BuildContext context) {
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
 
-      backgroundColor: Colors.deepPurple.shade800,
+    return Container(
+      child: Scaffold(
 
-      appBar: AppBar(
-        title: Text(title, style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 32),),
-        backgroundColor: Colors.deepPurple.shade900,
-        elevation: 0.0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50),
-        
-        child: LayoutGrid(
-          isAncestor: true,
+        backgroundColor: Colors.deepPurple.shade800,
 
-          columns: [LayoutMinMax(minUnit: LayoutPixel(pixels: 350), maxUnit: LayoutFraction(fraction: 1)),
-                    LayoutMinMax(minUnit: LayoutPixel(pixels: 200), maxUnit: LayoutPixel(pixels: 400))],
+        appBar: AppBar(
+          title: Text(widget.title, style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 32),),
+          backgroundColor: Colors.deepPurple.shade900,
+          elevation: 0.0,
+          actions: <Widget>[
+            FlatButton(
+              color: Colors.yellowAccent,
+              child: Text("GitHub",style: TextStyle(color: Colors.black,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 24,),),
+              onPressed: () {
 
-          rows: [
-            LayoutPixel(pixels: 100),
-            LayoutDependent(line: 2, multiplicator: 1),
-            LayoutPixel(pixels: 100),
-            LayoutDependent(line: 1, multiplicator: 1),
-            LayoutPixel(pixels: 100),
-            LayoutDependent(line: 1, multiplicator: 1),
-            LayoutPixel(pixels: 100),
-            LayoutDependent(line: 1, multiplicator: 1),
+              },
+            )
           ],
+        ),
 
-          areas: [["...","..."],
-                  ["ThisIs","NestedLayoutGrid"],
-                  ["...","..."],
-                  ["DivideIt","..."],
-                  ["...","..."],
-                  ["NameAreas","..."],
-                  ["...","..."],
-                  ["AssignWidgets","..."]],
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 50,vertical: 50),
 
-          couples: [LayoutGridCouple(widget: ThisIs(),name: "ThisIs",sizeKey: "generic"),
-                    LayoutGridCouple(widget: ExampleOfLayoutGrid(),name: "NestedLayoutGrid",sizeKey: "nested")],
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+
+              return LayoutGrid(
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
+
+                sizeModel: InheritedSizeModel.of(context),
+
+                columns: [LayoutMinMax(minUnit: LayoutPixel(pixels: 350), maxUnit: LayoutFraction(fraction: 1)),
+                          LayoutPixel(pixels: 20),
+                          LayoutMinMax(minUnit: LayoutPixel(pixels: 200), maxUnit: LayoutPixel(pixels: 800))],
+
+                rows: [
+                  LayoutPixel(pixels: 50),
+                  LayoutDependent(line: 3, multiplicator: 1),
+                  LayoutFraction(fraction: 1),
+                ],
+
+                areas: [["....","...","................"],
+                        ["text","...","NestedLayoutGrid"],
+                        ["text","...","................"]],
+
+                couples: [LayoutGridCouple(widget: TestContainer(),name: "text", sizeKey: "ok"),
+                          LayoutGridCouple(widget: TestContainer2(),name: "NestedLayoutGrid", sizeKey: "ok2"),],
+              );
+            },
+          ), 
         ),
       ),
     );
   }
 }
 
-class ThisIs extends StatelessWidget {
+class TestContainer extends StatelessWidget {
 
-  final String id = "generic";
 
   @override
   Widget build(BuildContext context) {
 
-    final InheritedSizeModel sizeModel = InheritedSizeModel.of(context, sizeKey: id);
+    final InheritedSizeModel sizeModel = InheritedSizeModel.of(context, sizeKey: "ok");
+    print(sizeModel.getWidth("ok"));
 
     return Container(
-      width: sizeModel.getWidth(id),
-      height: sizeModel.getHeight(id),
 
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      width: sizeModel.getWidth("ok"),
+      height: sizeModel.getHeight("ok"),
 
-        children: <Widget>[
-          Text("This is a basic LayoutGrid", style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 48),),
-          Text("Created with a width and height of 400px", style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w500, fontSize: 42),)
-        ],
-      ),
+      color: Colors.white,
+      child: Text("OK"),
     );
   }
 }
 
-class ExampleOfLayoutGrid extends StatelessWidget {
+class TestContainer2 extends StatelessWidget {
 
-  final String id = "nested";
 
   @override
   Widget build(BuildContext context) {
 
-    final InheritedSizeModel sizeModel = InheritedSizeModel.of(context, sizeKey: id);
+    final InheritedSizeModel sizeModel = InheritedSizeModel.of(context, sizeKey: "ok2");
+    print(sizeModel.getWidth("ok2"));
 
     return Container(
 
-      width: sizeModel.getWidth(id),
-      height: sizeModel.getHeight(id),
+      width: sizeModel.getWidth("ok2"),
+      height: sizeModel.getHeight("ok2"),
 
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.white,
-          width: 2.5
-        ),
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-
-      child: LayoutGrid(
-        width: sizeModel.getWidth(id),
-        height: sizeModel.getHeight(id),
-
-        columns: [LayoutPixel()],
-        rows: [LayoutPixel()],
-
-        couples: [],
-      ),
+      color: Colors.white,
+      child: Text("OK2"),
     );
   }
 }

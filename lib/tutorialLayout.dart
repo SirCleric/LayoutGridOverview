@@ -17,6 +17,9 @@ class TutorialLayout extends StatelessWidget {
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
 
+          double wid = constraints.maxWidth;
+          print("width: $wid");
+
           return LayoutGrid(
             width: constraints.maxWidth,
             height: constraints.maxHeight,
@@ -24,14 +27,15 @@ class TutorialLayout extends StatelessWidget {
             layoutModel: InheritedLayoutModel.of(context),
 
             columns: [
-              LayoutPixel(pixels: 0.0, priority: 0),
-              LayoutMinMax(minUnit: LayoutFraction(fraction: 1), maxUnit: LayoutPixel(pixels: 200), priority: 1, subPriority: 1),
-              LayoutMinMax(minUnit: LayoutPixel(pixels: 400), maxUnit: LayoutFraction(fraction: 1), priority: 1,subPriority: 1),
-              LayoutMinMax(minUnit: LayoutFraction(fraction: 1), maxUnit: LayoutPixel(pixels: 200), priority: 1,subPriority: 0),
+              LayoutPixel(pixels: 0.0),
+              LayoutMinMax(minUnit: LayoutPixel(pixels: 100), unit: LayoutFraction(fraction: 1), maxUnit: LayoutPixel(pixels: 200), priority: 1, subPriority: 0),
+              LayoutMinMax(minUnit: LayoutPixel(pixels: 400), unit: LayoutFraction(fraction: 1), priority: 1, subPriority: 1),
+              LayoutMinMax(minUnit: LayoutPixel(pixels: 100), unit: LayoutFraction(fraction: 1), maxUnit: LayoutPixel(pixels: 200), priority: 1, subPriority: 0),
+              LayoutFraction(fraction: 1, priority: 1)
             ],
             rows: [
-              LayoutPixel(pixels: 0.0, priority: 0),
-              LayoutPixel(pixels: constraints.maxHeight, priority: 0),
+              LayoutPixel(pixels: 0.0),
+              LayoutPixel(pixels: constraints.maxHeight),
             ],
 
             couples: [

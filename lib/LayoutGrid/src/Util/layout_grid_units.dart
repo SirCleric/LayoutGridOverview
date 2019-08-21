@@ -5,8 +5,7 @@ import 'layout_grid_private_units.dart';
 class LayoutPixel extends LayoutUnit {
   LayoutPixel({
     this.pixels = 0.0,
-    int priority,
-    int subPriority,
+    int priority = 0,
   }) : assert(
     pixels != null,
   ), super(priority: priority);
@@ -21,8 +20,7 @@ class LayoutPixel extends LayoutUnit {
 class LayoutPercentage extends LayoutUnit {
   LayoutPercentage({
     this.percentage = 0.0,
-    int priority,
-    int subPriority,
+    int priority = 0,
   }) : assert(
     percentage >= 0.0,
   ), super(priority: priority);
@@ -37,8 +35,8 @@ class LayoutPercentage extends LayoutUnit {
 class LayoutFraction extends LayoutUnit {
   LayoutFraction({
     this.fraction = 0,
-    int priority,
-    this.subPriority,
+    int priority = 0,
+    this.subPriority = 0,
   }) : assert(
     fraction != null,
   ), super(priority: priority);
@@ -55,30 +53,22 @@ class LayoutMinMax extends LayoutUnit {
   LayoutMinMax({
     this.minUnit,
     this.maxUnit,
-    int priority,
-    this.subPriority,
+    this.unit,
+    int priority = 0,
+    this.subPriority = 0,
   }) : assert(
     !(minUnit is LayoutFraction && maxUnit is LayoutFraction),
   ), super(priority: priority);
 
-  LayoutUnit minUnit, maxUnit;
+  LayoutUnit unit,minUnit, maxUnit;
   int subPriority;
-
-  LayoutUnit getMinUnit() {
-    return minUnit;
-  }
-
-  LayoutUnit getMaxUnit() {
-    return maxUnit;
-  }
 }
 
 class LayoutDependent extends LayoutUnit {
   LayoutDependent({
     this.line,
     this.multiplicator = 1.0,
-    int priority,
-    int subPriority,
+    int priority = 0,
   }) : assert(
     line != null,
     multiplicator != null,

@@ -26,7 +26,7 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation'], function(da
     }
   };
   (LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit.new = function(opts) {
-    let priority = opts && 'priority' in opts ? opts.priority : 0;
+    let priority = opts && 'priority' in opts ? opts.priority : null;
     this[index] = 0;
     this[axis] = null;
     this[priority$] = priority;
@@ -43,17 +43,10 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation'], function(da
     index: dart.fieldType(core.int),
     axis: dart.fieldType(src__painting__basic_types.Axis)
   }));
-  LayoutGrid__src__Util__layout_grid_private_units.LayoutNull = class LayoutNull extends LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit {};
-  (LayoutGrid__src__Util__layout_grid_private_units.LayoutNull.new = function() {
-    LayoutGrid__src__Util__layout_grid_private_units.LayoutNull.__proto__.new.call(this);
-    ;
-  }).prototype = LayoutGrid__src__Util__layout_grid_private_units.LayoutNull.prototype;
-  dart.addTypeTests(LayoutGrid__src__Util__layout_grid_private_units.LayoutNull);
-  dart.setLibraryUri(LayoutGrid__src__Util__layout_grid_private_units.LayoutNull, "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart");
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units", {
     "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart": LayoutGrid__src__Util__layout_grid_private_units
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart"],"names":[],"mappings":";;;;;;;;IAMM;;;;;;IACA;;;;;;IACC;;;;;;;;QAJY,wDAAW;IAGxB,cAAQ;IACP;IAJY;;EAAc;;;;;;;;;;;;;;;;EAOI","file":"layout_grid_private_units.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart"],"names":[],"mappings":";;;;;;;;IAMM;;;;;;IACA;;;;;;IACC;;;;;;;;QAJY;IAGb,cAAQ;IACP;IAJY;;EAAU","file":"layout_grid_private_units.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__Util__layout_grid_private_units: LayoutGrid__src__Util__layout_grid_private_units

@@ -19,10 +19,9 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   };
   (LayoutGrid__src__Util__layout_grid_units.LayoutPixel.new = function(opts) {
     let pixels = opts && 'pixels' in opts ? opts.pixels : 0.0;
-    let priority = opts && 'priority' in opts ? opts.priority : null;
-    let subPriority = opts && 'subPriority' in opts ? opts.subPriority : null;
+    let priority = opts && 'priority' in opts ? opts.priority : 0;
     this[pixels$] = pixels;
-    if (!(pixels != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 11, 5, "pixels != null");
+    if (!(pixels != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 10, 5, "pixels != null");
     LayoutGrid__src__Util__layout_grid_units.LayoutPixel.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutPixel.prototype;
@@ -50,10 +49,9 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   };
   (LayoutGrid__src__Util__layout_grid_units.LayoutPercentage.new = function(opts) {
     let percentage = opts && 'percentage' in opts ? opts.percentage : 0.0;
-    let priority = opts && 'priority' in opts ? opts.priority : null;
-    let subPriority = opts && 'subPriority' in opts ? opts.subPriority : null;
+    let priority = opts && 'priority' in opts ? opts.priority : 0;
     this[percentage$] = percentage;
-    if (!(dart.notNull(percentage) >= 0.0)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 27, 5, "percentage >= 0.0");
+    if (!(dart.notNull(percentage) >= 0.0)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 25, 5, "percentage >= 0.0");
     LayoutGrid__src__Util__layout_grid_units.LayoutPercentage.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutPercentage.prototype;
@@ -87,11 +85,11 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   };
   (LayoutGrid__src__Util__layout_grid_units.LayoutFraction.new = function(opts) {
     let fraction = opts && 'fraction' in opts ? opts.fraction : 0;
-    let priority = opts && 'priority' in opts ? opts.priority : null;
-    let subPriority = opts && 'subPriority' in opts ? opts.subPriority : null;
+    let priority = opts && 'priority' in opts ? opts.priority : 0;
+    let subPriority = opts && 'subPriority' in opts ? opts.subPriority : 0;
     this[fraction$] = fraction;
     this[subPriority$] = subPriority;
-    if (!(fraction != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 43, 5, "fraction != null");
+    if (!(fraction != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 41, 5, "fraction != null");
     LayoutGrid__src__Util__layout_grid_units.LayoutFraction.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutFraction.prototype;
@@ -109,6 +107,12 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
     fraction: dart.fieldType(core.int)
   }));
   LayoutGrid__src__Util__layout_grid_units.LayoutMinMax = class LayoutMinMax extends LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit {
+    get unit() {
+      return this[unit$];
+    }
+    set unit(value) {
+      this[unit$] = value;
+    }
     get minUnit() {
       return this[minUnit$];
     }
@@ -127,37 +131,30 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
     set subPriority(value) {
       this[subPriority$0] = value;
     }
-    getMinUnit() {
-      return this.minUnit;
-    }
-    getMaxUnit() {
-      return this.maxUnit;
-    }
   };
   (LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.new = function(opts) {
     let minUnit = opts && 'minUnit' in opts ? opts.minUnit : null;
     let maxUnit = opts && 'maxUnit' in opts ? opts.maxUnit : null;
-    let priority = opts && 'priority' in opts ? opts.priority : null;
-    let subPriority = opts && 'subPriority' in opts ? opts.subPriority : null;
+    let unit = opts && 'unit' in opts ? opts.unit : null;
+    let priority = opts && 'priority' in opts ? opts.priority : 0;
+    let subPriority = opts && 'subPriority' in opts ? opts.subPriority : 0;
     this[minUnit$] = minUnit;
     this[maxUnit$] = maxUnit;
+    this[unit$] = unit;
     this[subPriority$0] = subPriority;
-    if (!!(LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(minUnit) && LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(maxUnit))) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 61, 5, "!(minUnit is LayoutFraction && maxUnit is LayoutFraction)");
+    if (!!(LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(minUnit) && LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(maxUnit))) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 60, 5, "!(minUnit is LayoutFraction && maxUnit is LayoutFraction)");
     LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_units.LayoutMinMax);
+  const unit$ = Symbol("LayoutMinMax.unit");
   const minUnit$ = Symbol("LayoutMinMax.minUnit");
   const maxUnit$ = Symbol("LayoutMinMax.maxUnit");
   const subPriority$0 = Symbol("LayoutMinMax.subPriority");
-  dart.setMethodSignature(LayoutGrid__src__Util__layout_grid_units.LayoutMinMax, () => ({
-    __proto__: dart.getMethods(LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.__proto__),
-    getMinUnit: dart.fnType(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit, []),
-    getMaxUnit: dart.fnType(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit, [])
-  }));
   dart.setLibraryUri(LayoutGrid__src__Util__layout_grid_units.LayoutMinMax, "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart");
   dart.setFieldSignature(LayoutGrid__src__Util__layout_grid_units.LayoutMinMax, () => ({
     __proto__: dart.getFields(LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.__proto__),
+    unit: dart.fieldType(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit),
     minUnit: dart.fieldType(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit),
     maxUnit: dart.fieldType(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit),
     subPriority: dart.fieldType(core.int)
@@ -182,11 +179,10 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   (LayoutGrid__src__Util__layout_grid_units.LayoutDependent.new = function(opts) {
     let line = opts && 'line' in opts ? opts.line : null;
     let multiplicator = opts && 'multiplicator' in opts ? opts.multiplicator : 1.0;
-    let priority = opts && 'priority' in opts ? opts.priority : null;
-    let subPriority = opts && 'subPriority' in opts ? opts.subPriority : null;
+    let priority = opts && 'priority' in opts ? opts.priority : 0;
     this[line$] = line;
     this[multiplicator$] = multiplicator;
-    if (!(line != null)) dart.assertFailed(multiplicator != null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 83, 5, "line != null");
+    if (!(line != null)) dart.assertFailed(multiplicator != null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 73, 5, "line != null");
     LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutDependent.prototype;
@@ -206,7 +202,7 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units", {
     "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart": LayoutGrid__src__Util__layout_grid_units
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart"],"names":[],"mappings":";;;;;;;;;IAaS;;;;;;;AAGL,YAAO;IACT;;;QAXO,kDAAS;QACV;QACA;IAFC;UAIL,MAAM,IAAI;AACT,6FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAkBrB;;;;;;aAEgB;AACrB,YAAkB,AAAM,cAAjB,mBAAa,mBAAM,KAAK;IACjC;;;QAXO,8DAAa;QACd;QACA;IAFC;UAIM,aAAX,UAAU,KAAI;AACb,kGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAkBxB;;;;;;IACA;;;;;;aAEgB,gBAAuB;AACzC,YAAgB,AAAiB,cAA1B,8BAAW,cAAc,iBAAG,SAAS;IAC9C;;;QAZO,wDAAW;QACZ;QACC;IAFA;IAEA;UAEL,QAAQ,IAAI;AACX,gGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;;;IAoBjB;;;;;;IAAS;;;;;;IAChB;;;;;;;AAGF,YAAO;IACT;;AAGE,YAAO;IACT;;;QAjBO;QACA;QACD;QACC;IAHA;IACA;IAEA;SAEL,EAAU,2DAAR,OAAO,KAA8B,2DAAR,OAAO;AACrC,8FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;;;;;;IAyBxB;;;;;;IACG;;;;;;aAEsB;AAC3B,YAAkB,cAAX,AAAI,IAAA,QAAC,2BAAQ;IACtB;;;QAdO;QACA,uEAAgB;QACjB;QACA;IAHC;IACA;UAIL,IAAI,IAAI,yBACR,aAAa,IAAI;AAChB,iGAAgB,QAAQ;;EAAC","file":"layout_grid_units.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart"],"names":[],"mappings":";;;;;;;;;IAYS;;;;;;;AAGL,YAAO;IACT;;;QAVO,kDAAS;QACV,wDAAW;IADV;UAGL,MAAM,IAAI;AACT,6FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAiBrB;;;;;;aAEgB;AACrB,YAAkB,AAAM,cAAjB,mBAAa,mBAAM,KAAK;IACjC;;;QAVO,8DAAa;QACd,wDAAW;IADV;UAGM,aAAX,UAAU,KAAI;AACb,kGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAkBxB;;;;;;IACA;;;;;;aAEgB,gBAAuB;AACzC,YAAgB,AAAiB,cAA1B,8BAAW,cAAc,iBAAG,SAAS;IAC9C;;;QAZO,wDAAW;QACZ,wDAAW;QACV,iEAAc;IAFd;IAEA;UAEL,QAAQ,IAAI;AACX,gGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;;;IAqBjB;;;;;;IAAK;;;;;;IAAS;;;;;;IACrB;;;;;;;;QAVG;QACA;QACA;QACD,wDAAW;QACV,iEAAc;IAJd;IACA;IACA;IAEA;SAEL,EAAU,2DAAR,OAAO,KAA8B,2DAAR,OAAO;AACrC,8FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;;;IAgBxB;;;;;;IACG;;;;;;aAEsB;AAC3B,YAAkB,cAAX,AAAI,IAAA,QAAC,2BAAQ;IACtB;;;QAbO;QACA,uEAAgB;QACjB,wDAAW;IAFV;IACA;UAGL,IAAI,IAAI,yBACR,aAAa,IAAI;AAChB,iGAAgB,QAAQ;;EAAC","file":"layout_grid_units.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__Util__layout_grid_units: LayoutGrid__src__Util__layout_grid_units

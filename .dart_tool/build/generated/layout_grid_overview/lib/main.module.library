@@ -1,1 +1,1 @@
-{"isEntrypoint":true,"deps":["flutter_web|lib/material.dart","layout_grid_overview|lib/LayoutGrid/layout_grid.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":true}
+{"isEntrypoint":true,"deps":["flutter_web|lib/material.dart","layout_grid_overview|lib/tutorialLayout.dart","layout_grid_overview|lib/LayoutGrid/layout_grid.dart","layout_grid_overview|lib/Texts/styles.dart","layout_grid_overview|lib/Texts/textWidgets.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":true}

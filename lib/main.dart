@@ -1,6 +1,9 @@
 import 'package:flutter_web/material.dart';
+import 'package:layout_grid_overview/tutorialLayout.dart';
 
 import 'LayoutGrid/layout_grid.dart';
+import 'Texts/styles.dart';
+import 'Texts/textWidgets.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: InheritedSizeModel(child: MyHomePage(title: 'Layout grid overview')),
+      home: InheritedLayoutModel(child: MyHomePage(title: 'Layout grid overview')),
     );
   }
 }
@@ -53,79 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
 
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50,vertical: 50),
-
-          child: LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-
-              return LayoutGrid(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-
-                sizeModel: InheritedSizeModel.of(context),
-
-                columns: [LayoutMinMax(minUnit: LayoutPixel(pixels: 350), maxUnit: LayoutFraction(fraction: 1)),
-                          LayoutPixel(pixels: 20),
-                          LayoutMinMax(minUnit: LayoutPixel(pixels: 200), maxUnit: LayoutPixel(pixels: 800))],
-
-                rows: [
-                  LayoutPixel(pixels: 50),
-                  LayoutDependent(line: 3, multiplicator: 1),
-                  LayoutFraction(fraction: 1),
-                ],
-
-                areas: [["....","...","................"],
-                        ["text","...","NestedLayoutGrid"],
-                        ["text","...","................"]],
-
-                couples: [LayoutGridCouple(widget: TestContainer(),name: "text", sizeKey: "ok"),
-                          LayoutGridCouple(widget: TestContainer2(),name: "NestedLayoutGrid", sizeKey: "ok2"),],
-              );
-            },
-          ), 
-        ),
+        body: TutorialLayout(),
       ),
-    );
-  }
-}
-
-class TestContainer extends StatelessWidget {
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    final InheritedSizeModel sizeModel = InheritedSizeModel.of(context, sizeKey: "ok");
-    print(sizeModel.getWidth("ok"));
-
-    return Container(
-
-      width: sizeModel.getWidth("ok"),
-      height: sizeModel.getHeight("ok"),
-
-      color: Colors.white,
-      child: Text("OK"),
-    );
-  }
-}
-
-class TestContainer2 extends StatelessWidget {
-
-
-  @override
-  Widget build(BuildContext context) {
-
-    final InheritedSizeModel sizeModel = InheritedSizeModel.of(context, sizeKey: "ok2");
-    print(sizeModel.getWidth("ok2"));
-
-    return Container(
-
-      width: sizeModel.getWidth("ok2"),
-      height: sizeModel.getHeight("ok2"),
-
-      color: Colors.white,
-      child: Text("OK2"),
     );
   }
 }

@@ -2,7 +2,7 @@ name: layout_grid_overview
 description: An app built using Flutter for web
 
 environment:
-  # You must be using Flutter >=1.5.0 or Dart >=2.3.0
+  # You must be using Flutter >=1.5.0 or Dart >=2.3.0, >=2.3.0 <3.0.0
   sdk: '>=2.3.0 <3.0.0'
 
 dependencies:
@@ -10,8 +10,8 @@ dependencies:
   flutter_web_ui: any
 
 dev_dependencies:
-  build_runner: ^1.5.0
-  build_web_compilers: ^2.1.0
+  build_runner: ^1.6.2
+  build_web_compilers: ^2.0.0
   pedantic: ^1.7.0
 
 dependency_overrides:

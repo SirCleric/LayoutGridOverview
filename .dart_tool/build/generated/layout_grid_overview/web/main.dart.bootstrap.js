@@ -80,14 +80,17 @@ let modulePaths = {
  "packages/layout_grid_overview/LayoutGrid/layout_grid": "packages/layout_grid_overview/LayoutGrid/layout_grid.ddc",
  "packages/layout_grid_overview/LayoutGrid/src/Util/area_creation": "packages/layout_grid_overview/LayoutGrid/src/Util/area_creation.ddc",
  "packages/layout_grid_overview/LayoutGrid/src/Util/custom_layout_grid_scroll_behavior": "packages/layout_grid_overview/LayoutGrid/src/Util/custom_layout_grid_scroll_behavior.ddc",
- "packages/layout_grid_overview/LayoutGrid/src/Util/inherited_size_model": "packages/layout_grid_overview/LayoutGrid/src/Util/inherited_size_model.ddc",
+ "packages/layout_grid_overview/LayoutGrid/src/Util/inherited_layout_model": "packages/layout_grid_overview/LayoutGrid/src/Util/inherited_layout_model.ddc",
+ "packages/layout_grid_overview/LayoutGrid/src/Util/layout_creation": "packages/layout_grid_overview/LayoutGrid/src/Util/layout_creation.ddc",
  "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_child": "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_child.ddc",
- "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_unit": "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_unit.ddc",
- "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_unit_classes": "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_unit_classes.ddc",
- "packages/layout_grid_overview/LayoutGrid/src/Util/line_creation": "packages/layout_grid_overview/LayoutGrid/src/Util/line_creation.ddc",
+ "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units": "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.ddc",
+ "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units": "packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.ddc",
  "packages/layout_grid_overview/LayoutGrid/src/layout_grid": "packages/layout_grid_overview/LayoutGrid/src/layout_grid.ddc",
  "packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple": "packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple.ddc",
+ "packages/layout_grid_overview/Texts/styles": "packages/layout_grid_overview/Texts/styles.ddc",
+ "packages/layout_grid_overview/Texts/textWidgets": "packages/layout_grid_overview/Texts/textWidgets.ddc",
  "packages/layout_grid_overview/main": "packages/layout_grid_overview/main.ddc",
+ "packages/layout_grid_overview/tutorialLayout": "packages/layout_grid_overview/tutorialLayout.ddc",
  "packages/meta/meta": "packages/meta/meta.ddc",
  "packages/typed_data/typed_buffers": "packages/typed_data/typed_buffers.ddc",
  "packages/vector_math/hash": "packages/vector_math/hash.ddc",
@@ -296,7 +299,7 @@ define("main.dart.bootstrap", ["web/main", "dart_sdk"], function(app, dart_sdk) 
   }
 
   /* MAIN_EXTENSION_MARKER */
-  app.main.main();
+  (app.web__main || app.main).main();
   var bootstrap = {
       hot$onChildUpdate: function(childName, child) {
         // Special handling for the multi-root scheme uris. We need to strip

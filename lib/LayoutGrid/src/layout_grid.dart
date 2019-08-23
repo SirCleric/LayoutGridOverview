@@ -2,7 +2,6 @@ import 'package:flutter_web/material.dart';
 import 'Util/layout_creation.dart';
 import 'Util/layout_grid_private_units.dart';
 
-import 'Util/area_creation.dart';
 import 'Util/custom_layout_grid_scroll_behavior.dart';
 import 'Util/inherited_layout_model.dart';
 import 'Util/layout_grid_child.dart';
@@ -46,21 +45,24 @@ class LayoutGrid extends StatefulWidget {
 class _LayoutGridState extends State<LayoutGrid> {
 
   List<LayoutGridCouple> _couples;
-  List<double> _col, _rows;
+  List<double> _cols, _rows;
   double _top, _left, _width, _height;
 
   @override
   void initState() {
     super.initState();
 
-    if (widget._calculatedCouples == null) widget._calculatedCouples = getPositionedGridCoupleList(widget.areas, widget.couples);
+    if (widget._calculatedCouples == null) widget._calculatedCouples = LayoutGridCouple.getPositionedGridCoupleList(widget.areas, widget.couples);
     _couples = widget._calculatedCouples;
   }
 
   @override
   Widget build(BuildContext context) {
 
-    widget._calculatedLayout = createLayout(widget.columns, widget.rows, (widget.width != null) ? widget.width : 0.0, (widget.height != null) ? widget.height : 0.0);
+    widget._calculatedLayout = Layout.createLayout(widget.columns, widget.rows, (widget.width != null) ? widget.width : 0.0, (widget.height != null) ? widget.height : 0.0);
+
+    _cols = widget._calculatedLayout.sublist(0,widget.columns.length);
+    _rows = widget._calculatedLayout.sublist(widget.columns.length);
 
     return ScrollConfiguration(
 
@@ -83,18 +85,12 @@ class _LayoutGridState extends State<LayoutGrid> {
                 fit: StackFit.expand,
                 children: List<Widget>.generate(_couples.length, (int index) {
                   
-                  getWidgetParameters(index);
+                  setParameters(Layout.getWidgetParameters(index, _couples, _cols, _rows));
                   
-                  //If the user gave a key to the widget then we add or update the Size associated with that key,
-                  //making it accessible from elsewhere just by calling the InheritedSizeModel
                   if (_couples[index].modelKey != null) {
                     widget.layoutModel.updateModel(_couples[index].modelKey, Size(_width, _height), Offset(_left,_top));
                   }
 
-                  //We pass top and left to the positioned widget inside of the LayoutGridChild
-                  //And the height and width calculated via difference of cols(col1 and col0) and rows(row1 and row0) to the Container
-                  //
-                  //We assign an UniqueKey so that flutter is forced to update the widget
                   return LayoutGridChild(
                     key: (_couples[index].key != null) ? _couples[index].key : UniqueKey(),
                     top: _top,
@@ -112,33 +108,10 @@ class _LayoutGridState extends State<LayoutGrid> {
     );
   }
 
-  void getWidgetParameters(int index) {
-
-    _col = widget._calculatedLayout.sublist(0,widget.columns.length);
-    _rows = widget._calculatedLayout.sublist(widget.columns.length);
-
-    if (_couples[index].position != null) {
-      _top = _couples[index].position.dy;        
-    }else {
-      _top = _rows[_couples[index].row0];
-    }
-
-    if(_couples[index].position != null) {
-      _left = _couples[index].position.dx;
-    }else {
-      _left = _col[_couples[index].col0];
-    }
-
-    if (_couples[index].size != null) {
-      _height = _couples[index].size.height;
-    }else {
-      _height = (_rows[_couples[index].row1] - _rows[_couples[index].row0] >= 0.0) ? _rows[_couples[index].row1] - _rows[_couples[index].row0] : 0.0;
-    }
-
-    if (_couples[index].size != null) {
-      _width = _couples[index].size.width;
-    }else {
-      _width = (_col[_couples[index].col1] - _col[_couples[index].col0] >= 0.0) ? _col[_couples[index].col1] - _col[_couples[index].col0] : 0.0;
-    }  
+  void setParameters(Map<String, double> map) {
+    _top = map["top"];
+    _left = map["left"];
+    _height = map["height"];
+    _width = map["width"];
   }
 }

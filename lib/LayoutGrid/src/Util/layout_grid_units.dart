@@ -1,5 +1,3 @@
-import 'package:flutter_web/widgets.dart';
-
 import 'layout_grid_private_units.dart';
 
 class LayoutPixel extends LayoutUnit {

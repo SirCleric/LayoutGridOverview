@@ -1,7 +1,8 @@
-define(['dart_sdk', 'packages/flutter_web/src/animation/animation', 'packages/flutter_web/animation', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units', 'packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple', 'packages/layout_grid_overview/LayoutGrid/src/Util/inherited_layout_model', 'packages/layout_grid_overview/LayoutGrid/src/Util/area_creation', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_creation', 'packages/layout_grid_overview/LayoutGrid/src/Util/custom_layout_grid_scroll_behavior', 'packages/flutter_web_ui/ui', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_child'], function(dart_sdk, animation, animation$, layout_grid_private_units, layout_grid_couple, inherited_layout_model, area_creation, layout_creation, custom_layout_grid_scroll_behavior, ui, layout_grid_child) {
+define(['dart_sdk', 'packages/flutter_web/src/animation/animation', 'packages/flutter_web/animation', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units', 'packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple', 'packages/layout_grid_overview/LayoutGrid/src/Util/inherited_layout_model', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_creation', 'packages/layout_grid_overview/LayoutGrid/src/Util/custom_layout_grid_scroll_behavior', 'packages/flutter_web_ui/ui', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_child'], function(dart_sdk, animation, animation$, layout_grid_private_units, layout_grid_couple, inherited_layout_model, layout_creation, custom_layout_grid_scroll_behavior, ui, layout_grid_child) {
   'use strict';
   const core = dart_sdk.core;
   const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
   const src__painting__basic_types = animation.src__painting__basic_types;
@@ -16,20 +17,22 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation', 'packages/fl
   const LayoutGrid__src__Util__layout_grid_private_units = layout_grid_private_units.LayoutGrid__src__Util__layout_grid_private_units;
   const LayoutGrid__src__layout_grid_couple = layout_grid_couple.LayoutGrid__src__layout_grid_couple;
   const LayoutGrid__src__Util__inherited_layout_model = inherited_layout_model.LayoutGrid__src__Util__inherited_layout_model;
-  const LayoutGrid__src__Util__area_creation = area_creation.LayoutGrid__src__Util__area_creation;
   const LayoutGrid__src__Util__layout_creation = layout_creation.LayoutGrid__src__Util__layout_creation;
   const LayoutGrid__src__Util__custom_layout_grid_scroll_behavior = custom_layout_grid_scroll_behavior.LayoutGrid__src__Util__custom_layout_grid_scroll_behavior;
   const ui$ = ui.ui;
   const LayoutGrid__src__Util__layout_grid_child = layout_grid_child.LayoutGrid__src__Util__layout_grid_child;
   const LayoutGrid__src__layout_grid = Object.create(dart.library);
-  const $last = dartx.last;
   const $length = dartx.length;
+  const $sublist = dartx.sublist;
+  const $last = dartx.last;
   const $_get = dartx._get;
   const $isNotEmpty = dartx.isNotEmpty;
-  const $sublist = dartx.sublist;
+  const $addAll = dartx.addAll;
   let ListOfWidget = () => (ListOfWidget = dart.constFn(core.List$(src__widgets__framework.Widget)))();
   let intToLayoutGridChild = () => (intToLayoutGridChild = dart.constFn(dart.fnType(LayoutGrid__src__Util__layout_grid_child.LayoutGridChild, [core.int])))();
   let JSArrayOfWidget = () => (JSArrayOfWidget = dart.constFn(_interceptors.JSArray$(src__widgets__framework.Widget)))();
+  let LinkedMapOfString$double = () => (LinkedMapOfString$double = dart.constFn(_js_helper.LinkedMap$(core.String, core.double)))();
+  let IdentityMapOfString$double = () => (IdentityMapOfString$double = dart.constFn(_js_helper.IdentityMap$(core.String, core.double)))();
   const _calculatedCouples = dart.privateName(LayoutGrid__src__layout_grid, "_calculatedCouples");
   const _calculatedLayout = dart.privateName(LayoutGrid__src__layout_grid, "_calculatedLayout");
   LayoutGrid__src__layout_grid.LayoutGrid = class LayoutGrid extends src__widgets__framework.StatefulWidget {
@@ -147,7 +150,7 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation', 'packages/fl
     [_calculatedLayout]: dart.fieldType(core.List$(core.double))
   }));
   const _couples = dart.privateName(LayoutGrid__src__layout_grid, "_couples");
-  const _col = dart.privateName(LayoutGrid__src__layout_grid, "_col");
+  const _cols = dart.privateName(LayoutGrid__src__layout_grid, "_cols");
   const _rows = dart.privateName(LayoutGrid__src__layout_grid, "_rows");
   const _top = dart.privateName(LayoutGrid__src__layout_grid, "_top");
   const _left = dart.privateName(LayoutGrid__src__layout_grid, "_left");
@@ -187,47 +190,31 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation', 'packages/fl
   LayoutGrid__src__layout_grid._LayoutGridState = class _LayoutGridState extends src__widgets__framework.State$(LayoutGrid__src__layout_grid.LayoutGrid) {
     initState() {
       super.initState();
-      if (this.widget[_calculatedCouples] == null) this.widget[_calculatedCouples] = LayoutGrid__src__Util__area_creation.getPositionedGridCoupleList(this.widget.areas, this.widget.couples);
+      if (this.widget[_calculatedCouples] == null) this.widget[_calculatedCouples] = LayoutGrid__src__layout_grid_couple.LayoutGridCouple.getPositionedGridCoupleList(this.widget.areas, this.widget.couples);
       this[_couples] = this.widget[_calculatedCouples];
     }
     build(context) {
-      this.widget[_calculatedLayout] = LayoutGrid__src__Util__layout_creation.createLayout(this.widget.columns, this.widget.rows, this.widget.width != null ? this.widget.width : 0.0, this.widget.height != null ? this.widget.height : 0.0);
+      this.widget[_calculatedLayout] = LayoutGrid__src__Util__layout_creation.Layout.createLayout(this.widget.columns, this.widget.rows, this.widget.width != null ? this.widget.width : 0.0, this.widget.height != null ? this.widget.height : 0.0);
+      this[_cols] = this.widget[_calculatedLayout][$sublist](0, this.widget.columns[$length]);
+      this[_rows] = this.widget[_calculatedLayout][$sublist](this.widget.columns[$length]);
       return new src__widgets__scroll_configuration.ScrollConfiguration.new({behavior: new LayoutGrid__src__Util__custom_layout_grid_scroll_behavior.CustomLayoutGridScrollBehavior.new(), child: new src__widgets__container.Container.new({child: new src__widgets__scroll_view.ListView.new({controller: this.widget.scrollController, scrollDirection: this.widget.scrollDirection, children: JSArrayOfWidget().of([new src__widgets__container.Container.new({height: this.widget.height != null ? this.widget.height : this.widget[_calculatedLayout][$last], width: this.widget.width != null ? this.widget.width : this.widget[_calculatedLayout][$_get](dart.notNull(this.widget.columns[$length]) - 1), child: dart.test(this[_couples][$isNotEmpty]) ? new src__widgets__basic.Stack.new({fit: src__rendering__stack.StackFit.expand, children: ListOfWidget().generate(this[_couples][$length], dart.fn(index => {
-                    this.getWidgetParameters(index);
+                    this.setParameters(LayoutGrid__src__layout_grid.getWidgetParameters(index, this[_couples], this[_cols], this[_rows]));
                     if (this[_couples][$_get](index).modelKey != null) {
                       this.widget.layoutModel.updateModel(this[_couples][$_get](index).modelKey, new ui$.Size.new(this[_width], this[_height]), new ui$.Offset.new(this[_left], this[_top]));
                     }
-                    return new LayoutGrid__src__Util__layout_grid_child.LayoutGridChild.new({key: this[_couples][$_get](index).key != null ? this[_couples][$_get](index).key : new src__widgets__framework.UniqueKey.new(), top: this[_top], left: this[_left], height: this[_height], width: this[_width], widget: this[_couples][$_get](index).widget, $creationLocationd_0dea112b090073317d4: const$6 || (const$6 = dart.const(new src__widgets__widget_inspector._Location.new({line: 98, column: 26, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$5 || (const$5 = dart.constList([const$ || (const$ = dart.const(new src__widgets__widget_inspector._Location.new({line: 99, column: 21, name: "key"}))), const$0 || (const$0 = dart.const(new src__widgets__widget_inspector._Location.new({line: 100, column: 21, name: "top"}))), const$1 || (const$1 = dart.const(new src__widgets__widget_inspector._Location.new({line: 101, column: 21, name: "left"}))), const$2 || (const$2 = dart.const(new src__widgets__widget_inspector._Location.new({line: 102, column: 21, name: "height"}))), const$3 || (const$3 = dart.const(new src__widgets__widget_inspector._Location.new({line: 103, column: 21, name: "width"}))), const$4 || (const$4 = dart.const(new src__widgets__widget_inspector._Location.new({line: 104, column: 21, name: "widget"})))], src__widgets__widget_inspector._Location))})))});
-                  }, intToLayoutGridChild())), $creationLocationd_0dea112b090073317d4: const$10 || (const$10 = dart.const(new src__widgets__widget_inspector._Location.new({line: 82, column: 46, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$9 || (const$9 = dart.constList([const$7 || (const$7 = dart.const(new src__widgets__widget_inspector._Location.new({line: 83, column: 17, name: "fit"}))), const$8 || (const$8 = dart.const(new src__widgets__widget_inspector._Location.new({line: 84, column: 17, name: "children"})))], src__widgets__widget_inspector._Location))})))}) : new src__widgets__container.Container.new({$creationLocationd_0dea112b090073317d4: const$12 || (const$12 = dart.const(new src__widgets__widget_inspector._Location.new({line: 107, column: 20, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$11 || (const$11 = dart.constList([], src__widgets__widget_inspector._Location))})))}), $creationLocationd_0dea112b090073317d4: const$17 || (const$17 = dart.const(new src__widgets__widget_inspector._Location.new({line: 77, column: 13, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$16 || (const$16 = dart.constList([const$13 || (const$13 = dart.const(new src__widgets__widget_inspector._Location.new({line: 79, column: 15, name: "height"}))), const$14 || (const$14 = dart.const(new src__widgets__widget_inspector._Location.new({line: 80, column: 15, name: "width"}))), const$15 || (const$15 = dart.const(new src__widgets__widget_inspector._Location.new({line: 82, column: 15, name: "child"})))], src__widgets__widget_inspector._Location))})))})]), $creationLocationd_0dea112b090073317d4: const$22 || (const$22 = dart.const(new src__widgets__widget_inspector._Location.new({line: 71, column: 16, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$21 || (const$21 = dart.constList([const$18 || (const$18 = dart.const(new src__widgets__widget_inspector._Location.new({line: 73, column: 11, name: "controller"}))), const$19 || (const$19 = dart.const(new src__widgets__widget_inspector._Location.new({line: 74, column: 11, name: "scrollDirection"}))), const$20 || (const$20 = dart.const(new src__widgets__widget_inspector._Location.new({line: 76, column: 11, name: "children"})))], src__widgets__widget_inspector._Location))})))}), $creationLocationd_0dea112b090073317d4: const$25 || (const$25 = dart.const(new src__widgets__widget_inspector._Location.new({line: 69, column: 14, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$24 || (const$24 = dart.constList([const$23 || (const$23 = dart.const(new src__widgets__widget_inspector._Location.new({line: 71, column: 9, name: "child"})))], src__widgets__widget_inspector._Location))})))}), $creationLocationd_0dea112b090073317d4: const$29 || (const$29 = dart.const(new src__widgets__widget_inspector._Location.new({line: 65, column: 12, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$28 || (const$28 = dart.constList([const$26 || (const$26 = dart.const(new src__widgets__widget_inspector._Location.new({line: 67, column: 7, name: "behavior"}))), const$27 || (const$27 = dart.const(new src__widgets__widget_inspector._Location.new({line: 69, column: 7, name: "child"})))], src__widgets__widget_inspector._Location))})))});
+                    return new LayoutGrid__src__Util__layout_grid_child.LayoutGridChild.new({key: this[_couples][$_get](index).key != null ? this[_couples][$_get](index).key : new src__widgets__framework.UniqueKey.new(), top: this[_top], left: this[_left], height: this[_height], width: this[_width], widget: this[_couples][$_get](index).widget, $creationLocationd_0dea112b090073317d4: const$6 || (const$6 = dart.const(new src__widgets__widget_inspector._Location.new({line: 95, column: 26, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$5 || (const$5 = dart.constList([const$ || (const$ = dart.const(new src__widgets__widget_inspector._Location.new({line: 96, column: 21, name: "key"}))), const$0 || (const$0 = dart.const(new src__widgets__widget_inspector._Location.new({line: 97, column: 21, name: "top"}))), const$1 || (const$1 = dart.const(new src__widgets__widget_inspector._Location.new({line: 98, column: 21, name: "left"}))), const$2 || (const$2 = dart.const(new src__widgets__widget_inspector._Location.new({line: 99, column: 21, name: "height"}))), const$3 || (const$3 = dart.const(new src__widgets__widget_inspector._Location.new({line: 100, column: 21, name: "width"}))), const$4 || (const$4 = dart.const(new src__widgets__widget_inspector._Location.new({line: 101, column: 21, name: "widget"})))], src__widgets__widget_inspector._Location))})))});
+                  }, intToLayoutGridChild())), $creationLocationd_0dea112b090073317d4: const$10 || (const$10 = dart.const(new src__widgets__widget_inspector._Location.new({line: 85, column: 46, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$9 || (const$9 = dart.constList([const$7 || (const$7 = dart.const(new src__widgets__widget_inspector._Location.new({line: 86, column: 17, name: "fit"}))), const$8 || (const$8 = dart.const(new src__widgets__widget_inspector._Location.new({line: 87, column: 17, name: "children"})))], src__widgets__widget_inspector._Location))})))}) : new src__widgets__container.Container.new({$creationLocationd_0dea112b090073317d4: const$12 || (const$12 = dart.const(new src__widgets__widget_inspector._Location.new({line: 104, column: 20, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$11 || (const$11 = dart.constList([], src__widgets__widget_inspector._Location))})))}), $creationLocationd_0dea112b090073317d4: const$17 || (const$17 = dart.const(new src__widgets__widget_inspector._Location.new({line: 80, column: 13, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$16 || (const$16 = dart.constList([const$13 || (const$13 = dart.const(new src__widgets__widget_inspector._Location.new({line: 82, column: 15, name: "height"}))), const$14 || (const$14 = dart.const(new src__widgets__widget_inspector._Location.new({line: 83, column: 15, name: "width"}))), const$15 || (const$15 = dart.const(new src__widgets__widget_inspector._Location.new({line: 85, column: 15, name: "child"})))], src__widgets__widget_inspector._Location))})))})]), $creationLocationd_0dea112b090073317d4: const$22 || (const$22 = dart.const(new src__widgets__widget_inspector._Location.new({line: 74, column: 16, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$21 || (const$21 = dart.constList([const$18 || (const$18 = dart.const(new src__widgets__widget_inspector._Location.new({line: 76, column: 11, name: "controller"}))), const$19 || (const$19 = dart.const(new src__widgets__widget_inspector._Location.new({line: 77, column: 11, name: "scrollDirection"}))), const$20 || (const$20 = dart.const(new src__widgets__widget_inspector._Location.new({line: 79, column: 11, name: "children"})))], src__widgets__widget_inspector._Location))})))}), $creationLocationd_0dea112b090073317d4: const$25 || (const$25 = dart.const(new src__widgets__widget_inspector._Location.new({line: 72, column: 14, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$24 || (const$24 = dart.constList([const$23 || (const$23 = dart.const(new src__widgets__widget_inspector._Location.new({line: 74, column: 9, name: "child"})))], src__widgets__widget_inspector._Location))})))}), $creationLocationd_0dea112b090073317d4: const$29 || (const$29 = dart.const(new src__widgets__widget_inspector._Location.new({line: 68, column: 12, file: "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart", parameterLocations: const$28 || (const$28 = dart.constList([const$26 || (const$26 = dart.const(new src__widgets__widget_inspector._Location.new({line: 70, column: 7, name: "behavior"}))), const$27 || (const$27 = dart.const(new src__widgets__widget_inspector._Location.new({line: 72, column: 7, name: "child"})))], src__widgets__widget_inspector._Location))})))});
     }
-    getWidgetParameters(index) {
-      this[_col] = this.widget[_calculatedLayout][$sublist](0, this.widget.columns[$length]);
-      this[_rows] = this.widget[_calculatedLayout][$sublist](this.widget.columns[$length]);
-      if (this[_couples][$_get](index).position != null) {
-        this[_top] = this[_couples][$_get](index).position.dy;
-      } else {
-        this[_top] = this[_rows][$_get](this[_couples][$_get](index).row0);
-      }
-      if (this[_couples][$_get](index).position != null) {
-        this[_left] = this[_couples][$_get](index).position.dx;
-      } else {
-        this[_left] = this[_col][$_get](this[_couples][$_get](index).col0);
-      }
-      if (this[_couples][$_get](index).size != null) {
-        this[_height] = this[_couples][$_get](index).size.height;
-      } else {
-        this[_height] = dart.notNull(this[_rows][$_get](this[_couples][$_get](index).row1)) - dart.notNull(this[_rows][$_get](this[_couples][$_get](index).row0)) >= 0.0 ? dart.notNull(this[_rows][$_get](this[_couples][$_get](index).row1)) - dart.notNull(this[_rows][$_get](this[_couples][$_get](index).row0)) : 0.0;
-      }
-      if (this[_couples][$_get](index).size != null) {
-        this[_width] = this[_couples][$_get](index).size.width;
-      } else {
-        this[_width] = dart.notNull(this[_col][$_get](this[_couples][$_get](index).col1)) - dart.notNull(this[_col][$_get](this[_couples][$_get](index).col0)) >= 0.0 ? dart.notNull(this[_col][$_get](this[_couples][$_get](index).col1)) - dart.notNull(this[_col][$_get](this[_couples][$_get](index).col0)) : 0.0;
-      }
+    setParameters(map) {
+      this[_top] = map[$_get]("top");
+      this[_left] = map[$_get]("left");
+      this[_height] = map[$_get]("height");
+      this[_width] = map[$_get]("width");
     }
   };
   (LayoutGrid__src__layout_grid._LayoutGridState.new = function() {
     this[_couples] = null;
-    this[_col] = null;
+    this[_cols] = null;
     this[_rows] = null;
     this[_top] = null;
     this[_left] = null;
@@ -240,23 +227,37 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation', 'packages/fl
   dart.setMethodSignature(LayoutGrid__src__layout_grid._LayoutGridState, () => ({
     __proto__: dart.getMethods(LayoutGrid__src__layout_grid._LayoutGridState.__proto__),
     build: dart.fnType(src__widgets__framework.Widget, [src__widgets__framework.BuildContext]),
-    getWidgetParameters: dart.fnType(dart.void, [core.int])
+    setParameters: dart.fnType(dart.void, [core.Map$(core.String, core.double)])
   }));
   dart.setLibraryUri(LayoutGrid__src__layout_grid._LayoutGridState, "package:layout_grid_overview/LayoutGrid/src/layout_grid.dart");
   dart.setFieldSignature(LayoutGrid__src__layout_grid._LayoutGridState, () => ({
     __proto__: dart.getFields(LayoutGrid__src__layout_grid._LayoutGridState.__proto__),
     [_couples]: dart.fieldType(core.List$(LayoutGrid__src__layout_grid_couple.LayoutGridCouple)),
-    [_col]: dart.fieldType(core.List$(core.double)),
+    [_cols]: dart.fieldType(core.List$(core.double)),
     [_rows]: dart.fieldType(core.List$(core.double)),
     [_top]: dart.fieldType(core.double),
     [_left]: dart.fieldType(core.double),
     [_width]: dart.fieldType(core.double),
     [_height]: dart.fieldType(core.double)
   }));
+  LayoutGrid__src__layout_grid.getWidgetParameters = function(index, couples, cols, rows) {
+    let _map = new (LinkedMapOfString$double()).new();
+    if (couples[$_get](index).position != null) {
+      _map[$addAll](new (IdentityMapOfString$double()).from(["top", couples[$_get](index).position.dy, "left", couples[$_get](index).position.dx]));
+    } else {
+      _map[$addAll](new (IdentityMapOfString$double()).from(["top", rows[$_get](couples[$_get](index).row0), "left", cols[$_get](couples[$_get](index).col0)]));
+    }
+    if (couples[$_get](index).size != null) {
+      _map[$addAll](new (IdentityMapOfString$double()).from(["height", couples[$_get](index).size.height, "width", couples[$_get](index).size.width]));
+    } else {
+      _map[$addAll](new (IdentityMapOfString$double()).from(["height", dart.notNull(rows[$_get](couples[$_get](index).row1)) - dart.notNull(rows[$_get](couples[$_get](index).row0)) >= 0.0 ? dart.notNull(rows[$_get](couples[$_get](index).row1)) - dart.notNull(rows[$_get](couples[$_get](index).row0)) : 0.0, "width", dart.notNull(cols[$_get](couples[$_get](index).col1)) - dart.notNull(cols[$_get](couples[$_get](index).col0)) >= 0.0 ? dart.notNull(cols[$_get](couples[$_get](index).col1)) - dart.notNull(cols[$_get](couples[$_get](index).col0)) : 0.0]));
+    }
+    return _map;
+  };
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/layout_grid", {
     "package:layout_grid_overview/LayoutGrid/src/layout_grid.dart": LayoutGrid__src__layout_grid
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart"],"names":[],"mappings":"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","file":"layout_grid.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid.dart"],"names":[],"mappings":"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","file":"layout_grid.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__layout_grid: LayoutGrid__src__layout_grid

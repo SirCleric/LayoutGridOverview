@@ -7,6 +7,9 @@ define(['dart_sdk', 'packages/flutter_web/animation', 'packages/flutter_web_ui/u
   const ui$ = ui.ui;
   const src__foundation__key = assertions.src__foundation__key;
   const LayoutGrid__src__layout_grid_couple = Object.create(dart.library);
+  const $length = dartx.length;
+  const $_get = dartx._get;
+  const $_set = dartx._set;
   LayoutGrid__src__layout_grid_couple.LayoutGridCouple = class LayoutGridCouple extends core.Object {
     get widget() {
       return this[widget$];
@@ -68,6 +71,42 @@ define(['dart_sdk', 'packages/flutter_web/animation', 'packages/flutter_web_ui/u
     set modelKey(value) {
       super.modelKey = value;
     }
+    static getPositionedGridCoupleList(areas, couples) {
+      let _couples = couples;
+      let _name = null;
+      for (let _i = 0; _i < dart.notNull(_couples[$length]); _i = _i + 1) {
+        _name = _couples[$_get](_i).name;
+        if (_name != null) {
+          _couples[$_set](_i, LayoutGrid__src__layout_grid_couple.LayoutGridCouple._getPositionededGridCouple(areas, _couples[$_get](_i)));
+        }
+      }
+      return _couples;
+    }
+    static _getPositionededGridCouple(areas, couple) {
+      let _couple = couple;
+      for (let _i = 0; _i < dart.notNull(areas[$length]); _i = _i + 1) {
+        for (let _j = 0; _j < dart.notNull(areas[$_get](_i)[$length]); _j = _j + 1) {
+          if (areas[$_get](_i)[$_get](_j) == _couple.name) {
+            if (dart.notNull(_couple.col0) > _j || _couple.col0 === -1) {
+              _couple.col0 = _j;
+            }
+            if (dart.notNull(_couple.col1) < _j + 1 || _couple.col1 === -1) {
+              _couple.col1 = _j + 1;
+            }
+            if (dart.notNull(_couple.row0) > _i || _couple.row0 === -1) {
+              _couple.row0 = _i;
+            }
+            if (dart.notNull(_couple.row1) < _i + 1 || _couple.row1 === -1) {
+              _couple.row1 = _i + 1;
+            }
+          }
+        }
+      }
+      if (_couple.col0 === -1) {
+        dart.throw("Could not find the area specified by the LayoutGridCouple, did you write it correctly?");
+      }
+      return _couple;
+    }
   };
   (LayoutGrid__src__layout_grid_couple.LayoutGridCouple.new = function(opts) {
     let widget = opts && 'widget' in opts ? opts.widget : null;
@@ -120,7 +159,7 @@ define(['dart_sdk', 'packages/flutter_web/animation', 'packages/flutter_web_ui/u
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple", {
     "package:layout_grid_overview/LayoutGrid/src/layout_grid_couple.dart": LayoutGrid__src__layout_grid_couple
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple.dart"],"names":[],"mappings":";;;;;;;;;;IAsBe;;;;;;IAGT;;;;;;IAAM;;;;;;IAAM;;;;;;IAAM;;;;;;IAGT;;;;;;IAGF;;;;;;IAGE;;;;;;IAGH;;;;;;IAGG;;;;;;;;QA9BO;QACX;QACA,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR;QACA;QACA;QACA;IATW;IACX;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAU","file":"layout_grid_couple.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple.dart"],"names":[],"mappings":";;;;;;;;;;;;;IAsBe;;;;;;IAGT;;;;;;IAAM;;;;;;IAAM;;;;;;IAAM;;;;;;IAGT;;;;;;IAGF;;;;;;IAGE;;;;;;IAGH;;;;;;IAGG;;;;;;uCAEgE,OAA8B;AAClF,qBAAW,OAAO;AAClC;AAEP,eAAS,KAAK,GAAG,AAAG,EAAD,gBAAG,AAAS,QAAD,YAAS,KAAA,AAAE,EAAA;QACvC,QAAQ,AAAQ,AAAK,QAAL,QAAC,EAAE;AAEnB,YAAI,KAAK,IAAI;UACX,AAAQ,QAAA,QAAC,EAAE,EAAI,gFAA2B,KAAK,EAAE,AAAQ,QAAA,QAAC,EAAE;;;AAIhE,YAAO,SAAQ;IACjB;sCAEsE,OAAwB;AAC3E,oBAAU,MAAM;AAEjC,eAAS,KAAK,GAAG,AAAG,EAAD,gBAAG,AAAM,KAAD,YAAS,KAAA,AAAE,EAAA;AACpC,iBAAS,KAAK,GAAG,AAAG,EAAD,gBAAG,AAAK,AAAK,KAAL,QAAC,EAAE,aAAU,KAAA,AAAE,EAAA;AACxC,cAAI,AAAK,AAAI,AAAK,KAAT,QAAC,EAAE,SAAE,EAAE,KAAK,AAAQ,OAAD;AAC1B,gBAAiB,aAAb,AAAQ,OAAD,SAAQ,EAAE,IAAI,AAAQ,AAAK,OAAN,UAAS,CAAC;cACxC,AAAQ,OAAD,QAAQ,EAAE;;AAEnB,gBAAiB,aAAb,AAAQ,OAAD,SAAQ,AAAG,EAAD,GAAG,KAAK,AAAQ,AAAK,OAAN,UAAS,CAAC;cAC5C,AAAQ,OAAD,QAAQ,AAAG,EAAD,GAAG;;AAGtB,gBAAiB,aAAb,AAAQ,OAAD,SAAQ,EAAE,IAAI,AAAQ,AAAK,OAAN,UAAS,CAAC;cACxC,AAAQ,OAAD,QAAQ,EAAE;;AAEnB,gBAAiB,aAAb,AAAQ,OAAD,SAAQ,AAAG,EAAD,GAAG,KAAK,AAAQ,AAAK,OAAN,UAAS,CAAC;cAC5C,AAAQ,OAAD,QAAQ,AAAG,EAAD,GAAG;;;;;AAO5B,UAAI,AAAQ,AAAK,OAAN,UAAS,CAAC;QACnB,WAAO;;AAGT,YAAO,QAAO;IAChB;;;QA5EoB;QACX;QACA,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR;QACA;QACA;QACA;IATW;IACX;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAU","file":"layout_grid_couple.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__layout_grid_couple: LayoutGrid__src__layout_grid_couple

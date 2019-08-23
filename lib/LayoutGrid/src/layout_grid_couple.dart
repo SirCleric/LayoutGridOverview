@@ -14,9 +14,8 @@ class LayoutGridCouple {
       this.col1 = -1,
       this.row0 = -1,
       this.row1 = -1,
-      this.size = const Size(0.0, 0.0),
-      this.position = const Offset(0.0, 0.0),
-      this.shouldOverwrite = false,
+      this.size,
+      this.position,
       this.key,
       this.modelKey});
 
@@ -34,9 +33,6 @@ class LayoutGridCouple {
 
   ///Optional position overwrite
   final Offset position;
-
-  ///Should overwrite
-  final bool shouldOverwrite;
 
   ///Key to assign to the widget
   final Key key;

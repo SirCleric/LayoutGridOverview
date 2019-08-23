@@ -64,16 +64,16 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/inherited
     }
     build(context) {
       this.sizeModel = LayoutGrid__src__Util__inherited_layout_model.InheritedLayoutModel.of(context, {modelKey: this.modelKey});
-      this.gridSizeModel = LayoutGrid__src__Util__inherited_layout_model.InheritedLayoutModel.of(context, {modelKey: "Tutorial"});
-      this.widthSize = this.gridSizeModel.getWidth("Tutorial");
-      this.heightSize = this.gridSizeModel.getHeight("Tutorial");
+      this.gridSizeModel = LayoutGrid__src__Util__inherited_layout_model.InheritedLayoutModel.of(context, {modelKey: "Grid"});
+      this.widthSize = this.gridSizeModel.getWidth("Grid");
+      this.heightSize = this.gridSizeModel.getHeight("Grid");
       return new src__widgets__container.Container.new({width: this.sizeModel.getWidth(this.modelKey), height: this.sizeModel.getHeight(this.modelKey), child: new src__widgets__basic.Column.new({mainAxisAlignment: src__rendering__flex.MainAxisAlignment.start, children: JSArrayOfWidget().of([new src__widgets__text.Text.new("This is a LayoutGrid", {style: Texts__styles.styles.getHeaderStyle(), $creationLocationd_0dea112b090073317d4: const$2 || (const$2 = dart.const(new src__widgets__widget_inspector._Location.new({line: 33, column: 11, file: "org-dartlang-app:///packages/layout_grid_overview/Texts/textWidgets.dart", parameterLocations: const$1 || (const$1 = dart.constList([const$ || (const$ = dart.const(new src__widgets__widget_inspector._Location.new({line: 33, column: 16, name: "data"}))), const$0 || (const$0 = dart.const(new src__widgets__widget_inspector._Location.new({line: 33, column: 39, name: "style"})))], src__widgets__widget_inspector._Location))})))}), new src__widgets__text.Text.new("It has been created with the width of " + dart.str(this.widthSize) + " and height of " + dart.str(this.heightSize) + "px", {style: Texts__styles.styles.getBodyStyle(), $creationLocationd_0dea112b090073317d4: const$6 || (const$6 = dart.const(new src__widgets__widget_inspector._Location.new({line: 34, column: 11, file: "org-dartlang-app:///packages/layout_grid_overview/Texts/textWidgets.dart", parameterLocations: const$5 || (const$5 = dart.constList([const$3 || (const$3 = dart.const(new src__widgets__widget_inspector._Location.new({line: 34, column: 95, name: "data"}))), const$4 || (const$4 = dart.const(new src__widgets__widget_inspector._Location.new({line: 34, column: 96, name: "style"})))], src__widgets__widget_inspector._Location))})))})]), $creationLocationd_0dea112b090073317d4: const$10 || (const$10 = dart.const(new src__widgets__widget_inspector._Location.new({line: 28, column: 14, file: "org-dartlang-app:///packages/layout_grid_overview/Texts/textWidgets.dart", parameterLocations: const$9 || (const$9 = dart.constList([const$7 || (const$7 = dart.const(new src__widgets__widget_inspector._Location.new({line: 30, column: 9, name: "mainAxisAlignment"}))), const$8 || (const$8 = dart.const(new src__widgets__widget_inspector._Location.new({line: 32, column: 9, name: "children"})))], src__widgets__widget_inspector._Location))})))}), $creationLocationd_0dea112b090073317d4: const$15 || (const$15 = dart.const(new src__widgets__widget_inspector._Location.new({line: 23, column: 12, file: "org-dartlang-app:///packages/layout_grid_overview/Texts/textWidgets.dart", parameterLocations: const$14 || (const$14 = dart.constList([const$11 || (const$11 = dart.const(new src__widgets__widget_inspector._Location.new({line: 25, column: 7, name: "width"}))), const$12 || (const$12 = dart.const(new src__widgets__widget_inspector._Location.new({line: 26, column: 7, name: "height"}))), const$13 || (const$13 = dart.const(new src__widgets__widget_inspector._Location.new({line: 28, column: 7, name: "child"})))], src__widgets__widget_inspector._Location))})))});
     }
   };
   (Texts__textWidgets.FirstText.new = function(opts) {
     let key = opts && 'key' in opts ? opts.key : null;
     let $creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[modelKey] = "FirstText";
+    this[modelKey] = "Text";
     this[widthSize] = 0.0;
     this[heightSize] = 0.0;
     this[sizeModel] = null;
@@ -150,7 +150,7 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/inherited
   (Texts__textWidgets.SecondText.new = function(opts) {
     let key = opts && 'key' in opts ? opts.key : null;
     let $creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
-    this[modelKey$] = "SecondText";
+    this[modelKey$] = "Text";
     this[widthSize$] = 0.0;
     this[heightSize$] = 0.0;
     this[sizeModel$] = null;

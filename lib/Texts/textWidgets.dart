@@ -6,7 +6,7 @@ import 'styles.dart';
 class FirstText extends StatelessWidget {
   FirstText({Key key}) : super(key: key);
 
-  final String modelKey = "FirstText";
+  final String modelKey = "Text";
   double widthSize = 0.0, heightSize = 0.0;
   InheritedLayoutModel sizeModel;
   InheritedLayoutModel gridSizeModel;
@@ -15,10 +15,10 @@ class FirstText extends StatelessWidget {
   Widget build(BuildContext context) {
 
     sizeModel = InheritedLayoutModel.of(context, modelKey: modelKey);
-    gridSizeModel = InheritedLayoutModel.of(context, modelKey: "Tutorial");
+    gridSizeModel = InheritedLayoutModel.of(context, modelKey: "Grid");
 
-    widthSize = gridSizeModel.getWidth("Tutorial");
-    heightSize = gridSizeModel.getHeight("Tutorial");
+    widthSize = gridSizeModel.getWidth("Grid");
+    heightSize = gridSizeModel.getHeight("Grid");
 
     return Container(
 
@@ -41,7 +41,7 @@ class FirstText extends StatelessWidget {
 class SecondText extends StatelessWidget {
   SecondText({Key key}) : super(key: key);
 
-  final String modelKey = "SecondText";
+  final String modelKey = "Text";
   double widthSize = 0.0, heightSize = 0.0;
   InheritedLayoutModel sizeModel;
 

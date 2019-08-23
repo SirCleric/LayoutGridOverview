@@ -77,6 +77,7 @@ let modulePaths = {
  "packages/flutter_web/src/scheduler/binding": "packages/flutter_web/src/scheduler/binding.ddc",
  "packages/flutter_web/src/services/clipboard": "packages/flutter_web/src/services/clipboard.ddc",
  "packages/flutter_web_ui/ui": "packages/flutter_web_ui/ui.ddc",
+ "packages/layout_grid_overview/Grid/gridWidget": "packages/layout_grid_overview/Grid/gridWidget.ddc",
  "packages/layout_grid_overview/LayoutGrid/layout_grid": "packages/layout_grid_overview/LayoutGrid/layout_grid.ddc",
  "packages/layout_grid_overview/LayoutGrid/src/Util/area_creation": "packages/layout_grid_overview/LayoutGrid/src/Util/area_creation.ddc",
  "packages/layout_grid_overview/LayoutGrid/src/Util/custom_layout_grid_scroll_behavior": "packages/layout_grid_overview/LayoutGrid/src/Util/custom_layout_grid_scroll_behavior.ddc",

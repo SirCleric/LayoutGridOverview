@@ -1,14 +1,12 @@
-define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animation', 'packages/flutter_web/src/foundation/assertions'], function(dart_sdk, ui, animation, assertions) {
+define(['dart_sdk', 'packages/flutter_web/animation', 'packages/flutter_web_ui/ui', 'packages/flutter_web/src/foundation/assertions'], function(dart_sdk, animation, ui, assertions) {
   'use strict';
   const core = dart_sdk.core;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const ui$ = ui.ui;
   const src__widgets__framework = animation.src__widgets__framework;
+  const ui$ = ui.ui;
   const src__foundation__key = assertions.src__foundation__key;
   const LayoutGrid__src__layout_grid_couple = Object.create(dart.library);
-  let const$;
-  let const$0;
   LayoutGrid__src__layout_grid_couple.LayoutGridCouple = class LayoutGridCouple extends core.Object {
     get widget() {
       return this[widget$];
@@ -58,12 +56,6 @@ define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animatio
     set position(value) {
       super.position = value;
     }
-    get shouldOverwrite() {
-      return this[shouldOverwrite$];
-    }
-    set shouldOverwrite(value) {
-      super.shouldOverwrite = value;
-    }
     get key() {
       return this[key$];
     }
@@ -84,9 +76,8 @@ define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animatio
     let col1 = opts && 'col1' in opts ? opts.col1 : -1;
     let row0 = opts && 'row0' in opts ? opts.row0 : -1;
     let row1 = opts && 'row1' in opts ? opts.row1 : -1;
-    let size = opts && 'size' in opts ? opts.size : const$ || (const$ = dart.const(new ui$.Size.new(0.0, 0.0)));
-    let position = opts && 'position' in opts ? opts.position : const$0 || (const$0 = dart.const(new ui$.Offset.new(0.0, 0.0)));
-    let shouldOverwrite = opts && 'shouldOverwrite' in opts ? opts.shouldOverwrite : false;
+    let size = opts && 'size' in opts ? opts.size : null;
+    let position = opts && 'position' in opts ? opts.position : null;
     let key = opts && 'key' in opts ? opts.key : null;
     let modelKey = opts && 'modelKey' in opts ? opts.modelKey : null;
     this[widget$] = widget;
@@ -97,7 +88,6 @@ define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animatio
     this[row1$] = row1;
     this[size$] = size;
     this[position$] = position;
-    this[shouldOverwrite$] = shouldOverwrite;
     this[key$] = key;
     this[modelKey$] = modelKey;
     ;
@@ -111,7 +101,6 @@ define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animatio
   const name$ = Symbol("LayoutGridCouple.name");
   const size$ = Symbol("LayoutGridCouple.size");
   const position$ = Symbol("LayoutGridCouple.position");
-  const shouldOverwrite$ = Symbol("LayoutGridCouple.shouldOverwrite");
   const key$ = Symbol("LayoutGridCouple.key");
   const modelKey$ = Symbol("LayoutGridCouple.modelKey");
   dart.setLibraryUri(LayoutGrid__src__layout_grid_couple.LayoutGridCouple, "package:layout_grid_overview/LayoutGrid/src/layout_grid_couple.dart");
@@ -125,14 +114,13 @@ define(['dart_sdk', 'packages/flutter_web_ui/ui', 'packages/flutter_web/animatio
     name: dart.finalFieldType(core.String),
     size: dart.finalFieldType(ui$.Size),
     position: dart.finalFieldType(ui$.Offset),
-    shouldOverwrite: dart.finalFieldType(core.bool),
     key: dart.finalFieldType(src__foundation__key.Key),
     modelKey: dart.finalFieldType(core.String)
   }));
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple", {
     "package:layout_grid_overview/LayoutGrid/src/layout_grid_couple.dart": LayoutGrid__src__layout_grid_couple
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple.dart"],"names":[],"mappings":";;;;;;;;;;;;IAuBe;;;;;;IAGT;;;;;;IAAM;;;;;;IAAM;;;;;;IAAM;;;;;;IAGT;;;;;;IAGF;;;;;;IAGE;;;;;;IAGF;;;;;;IAGD;;;;;;IAGG;;;;;;;;QAlCO;QACX;QACA,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAa,gDAAK,KAAK;QACvB,wDAAiB,oDAAO,KAAK;QAC7B,6EAAkB;QAClB;QACA;IAVW;IACX;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAU","file":"layout_grid_couple.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/layout_grid_couple.dart"],"names":[],"mappings":";;;;;;;;;;IAsBe;;;;;;IAGT;;;;;;IAAM;;;;;;IAAM;;;;;;IAAM;;;;;;IAGT;;;;;;IAGF;;;;;;IAGE;;;;;;IAGH;;;;;;IAGG;;;;;;;;QA9BO;QACX;QACA,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR,4CAAO,CAAC;QACR;QACA;QACA;QACA;IATW;IACX;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;;EAAU","file":"layout_grid_couple.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__layout_grid_couple: LayoutGrid__src__layout_grid_couple

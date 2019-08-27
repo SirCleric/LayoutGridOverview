@@ -2,8 +2,6 @@ import 'package:flutter_web/material.dart';
 import 'package:layout_grid_overview/tutorialLayout.dart';
 
 import 'LayoutGrid/layout_grid.dart';
-import 'Texts/styles.dart';
-import 'Texts/textWidgets.dart';
 
 void main() => runApp(MyApp());
 

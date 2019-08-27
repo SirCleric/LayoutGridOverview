@@ -14,32 +14,34 @@ class FirstGrid extends StatelessWidget {
     gridSizeModel = InheritedLayoutModel.of(context, modelKey: modelKey);
 
     widthSize = gridSizeModel.getWidth(modelKey);
-    heightSize = gridSizeModel.getHeight(modelKey);
+    print(widthSize);
 
-    return Container(
+    return SizedBox(
+      width: widthSize,
+      height: widthSize,
+      child: Container(
 
-      width: gridSizeModel.getWidth(modelKey),
-      height: gridSizeModel.getWidth(modelKey),
 
-      foregroundDecoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.white,
-          width: 2,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.white,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(4.0),
         ),
-        borderRadius: BorderRadius.circular(4.0),
-      ),
 
-      child: LayoutGrid(
+        child: LayoutGrid(
 
-        width: gridSizeModel.getWidth(modelKey),
-        height: gridSizeModel.getWidth(modelKey),
+          width: widthSize,
+          height: widthSize,
 
-        columns: [],
+          columns: [],
 
-        rows: [],
+          rows: [],
 
-        couples: [],
+          couples: [],
 
+        ),
       ),
     );
   }

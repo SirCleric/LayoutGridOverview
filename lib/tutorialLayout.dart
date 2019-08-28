@@ -58,6 +58,10 @@ class TutorialLayout extends StatelessWidget {
                 widget: SecondText(),
                 col0: 0, col1: 1, row0: 3, row1: 4,
               ),
+              LayoutGridCouple(
+                widget: SecondGrid(),
+                col0: 2, col1: 3, row0: 3, row1: 4,
+              ),
             ],
           );
         },

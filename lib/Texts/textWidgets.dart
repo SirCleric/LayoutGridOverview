@@ -61,7 +61,7 @@ class SecondText extends StatelessWidget {
 
         children: <Widget>[
           Text("You can divide it in areas with lines",style: styles.getHeaderStyle()),
-          Text("Ex. col = [LayoutFraction(fraction: 1), LayoutFraction(fraction: 2), LayoutFraction(fraction: 1), ]",style: styles.getBodyStyle()),
+          Text("Ex. col = [LayoutPixel(pixels: 25.0), LayoutFraction(fraction: 2), LayoutPixel(pixels: 25.0), ]",style: styles.getBodyStyle()),
         ],
       ),
     );    

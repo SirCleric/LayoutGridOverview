@@ -21,48 +21,49 @@ class TutorialLayout extends StatelessWidget {
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
 
-          return LayoutGrid(
+          return SingleChildScrollView(
 
-            width: constraints.maxWidth,
+            child: LayoutGrid(
 
-            scrollController: scrollController,
+              width: constraints.maxWidth,
 
-            layoutModel: InheritedLayoutModel.of(context),
+              layoutModel: InheritedLayoutModel.of(context),
 
-            columns: [
-              LayoutPixel(pixels: 0.0),
-              LayoutMinMax(minUnit: LayoutPixel(pixels: 400), unit: LayoutFraction(fraction: 2)),
-              LayoutMinMax(maxUnit: LayoutPixel(pixels: 100), unit: LayoutFraction(fraction: 1)),
-              LayoutMinMax(minUnit: LayoutPixel(pixels: 200), unit: LayoutFraction(fraction: 2)),
-            ],
-            rows: [
-              LayoutPixel(pixels: 0.0),
-              LayoutPixel(pixels: 50.0),
-              LayoutPixel(pixels: constraints.maxHeight - 100),
-              LayoutPixel(pixels: 100.0),
-              LayoutPixel(pixels: constraints.maxHeight - 50),
-            ],
+              columns: [
+                LayoutPixel(pixels: 0.0),
+                LayoutMinMax(minUnit: LayoutPixel(pixels: 400), unit: LayoutFraction(fraction: 2)),
+                LayoutMinMax(maxUnit: LayoutPixel(pixels: 100), unit: LayoutFraction(fraction: 1)),
+                LayoutMinMax(minUnit: LayoutPixel(pixels: 200), unit: LayoutFraction(fraction: 2)),
+              ],
+              rows: [
+                LayoutPixel(pixels: 0.0),
+                LayoutPixel(pixels: 50.0),
+                LayoutPixel(pixels: constraints.maxHeight - 100),
+                LayoutPixel(pixels: 100.0),
+                LayoutPixel(pixels: constraints.maxHeight - 50),
+              ],
 
-            couples: [
-              LayoutGridCouple(
-                widget: FirstText(),
-                col0: 0, col1: 1, row0: 1, row1: 2,
-                modelKey: "Text",
-              ),
-              LayoutGridCouple(
-                widget: FirstGrid(),
-                col0: 2, col1: 3, row0: 1, row1: 2,
-                modelKey: "Grid",
-              ),
-              LayoutGridCouple(
-                widget: SecondText(),
-                col0: 0, col1: 1, row0: 3, row1: 4,
-              ),
-              LayoutGridCouple(
-                widget: SecondGrid(),
-                col0: 2, col1: 3, row0: 3, row1: 4,
-              ),
-            ],
+              couples: [
+                LayoutGridCouple(
+                  widget: FirstText(),
+                  col0: 0, col1: 1, row0: 1, row1: 2,
+                  modelKey: "Text",
+                ),
+                LayoutGridCouple(
+                  widget: FirstGrid(),
+                  col0: 2, col1: 3, row0: 1, row1: 2,
+                  modelKey: "Grid",
+                ),
+                LayoutGridCouple(
+                  widget: SecondText(),
+                  col0: 0, col1: 1, row0: 3, row1: 4,
+                ),
+                LayoutGridCouple(
+                  widget: SecondGrid(),
+                  col0: 2, col1: 3, row0: 3, row1: 4,
+                ),
+              ],
+            ),
           );
         },
       ), 

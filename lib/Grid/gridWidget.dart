@@ -21,7 +21,6 @@ class FirstGrid extends StatelessWidget {
       height: widthSize,
       child: Container(
 
-
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.white,
@@ -65,8 +64,7 @@ class SecondGrid extends StatelessWidget {
       width: widthSize,
       height: widthSize,
       child: Container(
-
-
+        
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.white,
@@ -84,9 +82,9 @@ class SecondGrid extends StatelessWidget {
 
           columns: [
             LayoutPixel(pixels: 0.0),
-            LayoutPixel(pixels: 25.0),
+            LayoutPixel(pixels: 25.0,priority: 1),
             LayoutFraction(fraction: 1),
-            LayoutPixel(pixels: 25.0),
+            LayoutPixel(pixels: 25.0,priority: 1),
           ],
 
           rows: [
@@ -98,18 +96,21 @@ class SecondGrid extends StatelessWidget {
 
           couples: [
             LayoutGridCouple(
-              widget: area("a0", context),
-              name: "a0",
+              widget: Area(modelKey: "a0",),
+              col0: 0,col1: 1,
+              row0: 0,row1: 1,
               modelKey: "a0"
             ),
             LayoutGridCouple(
-              widget: area("a1", context),
-              name: "a1",
+              widget: Area(modelKey: "a1",),
+              col0: 1,col1: 2,
+              row0: 0,row1: 1,
               modelKey: "a1"
             ),
             LayoutGridCouple(
-              widget: area("a2", context),
-              name: "a2",
+              widget: Area(modelKey: "a2",),
+              col0: 2,col1: 3,
+              row0: 0,row1: 1,
               modelKey: "a2"
             ),
           ],
@@ -119,26 +120,31 @@ class SecondGrid extends StatelessWidget {
   }
 }
 
-Container area(String name, BuildContext context) {
+class Area extends StatelessWidget {
+  Area({Key key, this.modelKey}) : super(key: key);
 
   double widthSize = 0.0, heightSize = 0.0;
   InheritedLayoutModel sizeModel;
-  final String modelKey = name;
+  final String modelKey;
 
-  sizeModel = InheritedLayoutModel.of(context, modelKey: modelKey);
+  @override
+  Widget build(BuildContext context) {
 
-  widthSize = sizeModel.getWidth(modelKey);
-  heightSize = sizeModel.getHeight(modelKey);
+    sizeModel = InheritedLayoutModel.of(context, modelKey: modelKey);
 
-  return Container(
-    width: widthSize,
-    height: heightSize,
+    widthSize = sizeModel.getWidth(modelKey);
+    heightSize = sizeModel.getHeight(modelKey);
 
-    decoration: BoxDecoration(
-      border: Border.all(
-        width: 2.0,
-        color: Colors.white,
-      )
-    ),
-  );
+    return Container(
+      width: widthSize,
+      height: heightSize,
+
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2.0,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter_web/material.dart';
-import 'package:layout_grid_overview/tutorialLayout.dart';
+import 'package:layout_grid_overview/colors.dart';
+import 'package:layout_grid_overview/mainLayout.dart';
 
 import 'LayoutGrid/layout_grid.dart';
 
@@ -37,24 +38,54 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       child: Scaffold(
 
-        backgroundColor: Colors.deepPurple.shade800,
+        backgroundColor: MyColors.lightGrey,
 
         appBar: AppBar(
-          title: Text(widget.title, style: TextStyle(color: Colors.white,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 32),),
-          backgroundColor: Colors.deepPurple.shade900,
-          elevation: 0.0,
-          actions: <Widget>[
-            FlatButton(
-              color: Colors.yellowAccent,
-              child: Text("GitHub",style: TextStyle(color: Colors.black,fontFamily: "ostrich", fontWeight: FontWeight.w700, fontSize: 24,),),
-              onPressed: () {
+          backgroundColor: MyColors.secondHandGrey,          
+          elevation: 2,
 
-              },
-            )
+          title: Text(
+            "Layout Grid",
+            style: TextStyle(
+              color: MyColors.whitish,
+              fontWeight: FontWeight.normal,
+              fontSize: 32,
+            ),
+          ),
+
+          actions: <Widget>[
+            ActionWidget(textData: "Home",),
+            ActionWidget(textData: "Credentials",),
+            ActionWidget(textData: "Reasons",),
           ],
         ),
 
-        body: TutorialLayout(),
+        body: MainLayout(),
+      ),
+    );
+  }
+}
+
+class ActionWidget extends StatelessWidget {
+  ActionWidget({Key key,@required this.textData}) : super(key: key);
+
+  String textData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+
+      margin: EdgeInsets.symmetric(horizontal: 24.0),
+
+      alignment: Alignment(0.0, 0.0),
+
+      child: Text(
+        textData,
+        style: TextStyle(
+          color: MyColors.whitish,
+          fontWeight: FontWeight.normal,
+          fontSize: 24,
+        ),
       ),
     );
   }

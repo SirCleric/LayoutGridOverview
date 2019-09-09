@@ -50,6 +50,13 @@ class _LayoutGridState extends State<LayoutGrid> {
   void initState() {
     super.initState();
 
+    if (widget._calculatedCouples == null) widget._calculatedCouples = LayoutGridCouple.getPositionedGridCoupleList(widget.areas, widget.couples);
+    _couples = widget._calculatedCouples;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
     if(widget.maxWidth != null) {
       widget.referenceWidth = widget.maxWidth;
     }
@@ -57,13 +64,6 @@ class _LayoutGridState extends State<LayoutGrid> {
     if (widget.maxHeight != null) {
       widget.referenceHeight = widget.maxHeight;
     }
-
-    if (widget._calculatedCouples == null) widget._calculatedCouples = LayoutGridCouple.getPositionedGridCoupleList(widget.areas, widget.couples);
-    _couples = widget._calculatedCouples;
-  }
-
-  @override
-  Widget build(BuildContext context) {
 
     widget._calculatedLayout = Layout.createLayout(widget.columns, widget.rows, (widget.referenceWidth != null) ? widget.referenceWidth : 0.0, 
                                                                                 (widget.referenceHeight != null) ? widget.referenceHeight : 0.0);

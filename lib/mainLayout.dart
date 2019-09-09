@@ -69,6 +69,12 @@ class MainLayout extends StatelessWidget {
                     row0: 3, row1: 4,
                     modelKey: "Contacts"
                   ),
+                  LayoutGridCouple(
+                    widget: LeftGrid(),
+                    col0: 1,col1: 2,
+                    row0: 7, row1: 8,
+                    modelKey: "LeftGrid",
+                  )
                 ],
               ),
             ),

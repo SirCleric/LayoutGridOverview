@@ -6,16 +6,13 @@ import 'layout_grid_units.dart';
 
 class Layout {
 
-  static List<double>_widthSizes;
-  static List<double>_heightSizes;
-
   static List<double> createLayout(List<LayoutUnit> cols, List<LayoutUnit> rows, double width, double height) {
 
     double _freeWidth = width;
     double _freeHeight = height;
 
-    _widthSizes = _initSizesListWithDefaultValue(cols.length + rows.length);
-    _heightSizes = _initSizesListWithDefaultValue(cols.length + rows.length);
+    List<double> _widthSizes = _initSizesListWithDefaultValue(cols.length + rows.length);
+    List<double> _heightSizes = _initSizesListWithDefaultValue(cols.length + rows.length);
 
     _setIndexAndAxis(cols, Axis.vertical);
     _setIndexAndAxis(rows, Axis.horizontal);
@@ -33,9 +30,8 @@ class Layout {
                                                     _freeHeight = _manageMinMaxAndFractionsAndGetFreeSpace(_joinedList, _i, _heightSizes, height, _freeHeight);
 
         }else {
-
-          (_joinedList[_i].axis == Axis.vertical) ? _freeWidth =  _manageDeterminedUnit(_joinedList, _i, width, _freeWidth):
-                                                    _freeHeight = _manageDeterminedUnit(_joinedList, _i, height, _freeHeight);
+          (_joinedList[_i].axis == Axis.vertical) ? _freeWidth =  _manageDeterminedUnit(_joinedList, _i, _widthSizes, width, _freeWidth):
+                                                    _freeHeight = _manageDeterminedUnit(_joinedList, _i, _heightSizes, height, _freeHeight);
         }
       }
     }
@@ -127,8 +123,8 @@ class Layout {
 
           double value = (_layoutMinMaxList[_i].unit as LayoutFraction).getValue(_sumOfFractions, freeSpace);
 
-          double maxValue = _getDeterminedValue(_layoutMinMaxList[_i].maxUnit, space);
-          double minValue = _getDeterminedValue(_layoutMinMaxList[_i].minUnit, space);
+          double maxValue = _getDeterminedValue(_layoutMinMaxList[_i].maxUnit, space, sizes);
+          double minValue = _getDeterminedValue(_layoutMinMaxList[_i].minUnit, space, sizes);
 
           if (value > maxValue && maxValue != -1.0) {
             _sumOfFractions -= (_layoutMinMaxList[_i].unit as LayoutFraction).fraction;
@@ -179,7 +175,7 @@ class Layout {
 
           if(_layoutMinMaxList[_i].unit is LayoutFraction) {
 
-            double maxValue = _getDeterminedValue(_layoutMinMaxList[_i].maxUnit, space);
+            double maxValue = _getDeterminedValue(_layoutMinMaxList[_i].maxUnit, space, sizes);
 
             if (maxValue == -1.0) {
 
@@ -223,9 +219,9 @@ class Layout {
     
     double _finalFreeSpace = freeSpace;
 
-    double value = _getDeterminedValue((joinedList[joinedListIndex] as LayoutMinMax).unit, space);
-    double minValue = _getDeterminedValue((joinedList[joinedListIndex] as LayoutMinMax).minUnit, space);
-    double maxValue = _getDeterminedValue((joinedList[joinedListIndex] as LayoutMinMax).maxUnit, space);
+    double value = _getDeterminedValue((joinedList[joinedListIndex] as LayoutMinMax).unit, space, sizes);
+    double minValue = _getDeterminedValue((joinedList[joinedListIndex] as LayoutMinMax).minUnit, space, sizes);
+    double maxValue = _getDeterminedValue((joinedList[joinedListIndex] as LayoutMinMax).maxUnit, space, sizes);
 
     if (value > maxValue && maxValue != -1.0) {
       sizes[joinedList[joinedListIndex].index] = maxValue;
@@ -243,19 +239,19 @@ class Layout {
     return _finalFreeSpace;
   }
 
-  static double _manageDeterminedUnit(List<LayoutUnit> joinedList, int joinedListIndex, double space, double freeSpace) {
+  static double _manageDeterminedUnit(List<LayoutUnit> joinedList, int joinedListIndex, List<double> sizes, double space, double freeSpace) {
 
     double _finalFreeSpace = freeSpace;
 
-    double value = _getDeterminedValue(joinedList[joinedListIndex], space);
+    double value = _getDeterminedValue(joinedList[joinedListIndex], space, sizes);
 
-    (joinedList[joinedListIndex].axis == Axis.vertical) ? _widthSizes[joinedList[joinedListIndex].index] = value : _heightSizes[joinedList[joinedListIndex].index] = value;
+    sizes[joinedList[joinedListIndex].index] = value;
     _finalFreeSpace -= value;
 
     return _finalFreeSpace;
   }
 
-  static double _getDeterminedValue(LayoutUnit unit, double space) {
+  static double _getDeterminedValue(LayoutUnit unit, double space, List<double> sizes) {
     double _value = 0.0;
 
     if (unit is LayoutPixel) {
@@ -265,11 +261,7 @@ class Layout {
       _value = unit.getValue(space);
 
     }else if (unit is LayoutDependent) {
-      if (unit.lineAxis == Axis.vertical) {      
-        _value = unit.getValue(_widthSizes);
-      }else {
-        _value = unit.getValue(_heightSizes);
-      }
+      _value = unit.getValue(sizes);
 
     }else if (unit == null) {
       _value = -1.0;
@@ -310,15 +302,11 @@ class Layout {
     for(int _i=0; _i < _finalList.length; _i++) {
 
       if (_i < colsLenght) {
-
         _finalList[_i] = widthPosition + widthSizes[_i];
         widthPosition += widthSizes[_i];
-
       }else {
-        
-        _finalList[_i] = heightPosition + heightSizes[_i - colsLenght];        
+        _finalList[_i] = heightPosition + heightSizes[_i - colsLenght];
         heightPosition += heightSizes[_i - colsLenght];
-
       }
     }
 

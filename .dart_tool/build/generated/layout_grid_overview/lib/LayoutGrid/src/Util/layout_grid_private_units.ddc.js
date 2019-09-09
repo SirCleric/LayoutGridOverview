@@ -18,6 +18,12 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation'], function(da
     set index(value) {
       this[index] = value;
     }
+    get referenceLine() {
+      return this[referenceLine$];
+    }
+    set referenceLine(value) {
+      this[referenceLine$] = value;
+    }
     get axis() {
       return this[axis];
     }
@@ -27,26 +33,30 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation'], function(da
   };
   (LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit.new = function(opts) {
     let priority = opts && 'priority' in opts ? opts.priority : null;
+    let referenceLine = opts && 'referenceLine' in opts ? opts.referenceLine : null;
     this[index] = 0;
     this[axis] = null;
     this[priority$] = priority;
+    this[referenceLine$] = referenceLine;
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit);
   const priority$ = Symbol("LayoutUnit.priority");
   const index = Symbol("LayoutUnit.index");
+  const referenceLine$ = Symbol("LayoutUnit.referenceLine");
   const axis = Symbol("LayoutUnit.axis");
   dart.setLibraryUri(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit, "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart");
   dart.setFieldSignature(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit, () => ({
     __proto__: dart.getFields(LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit.__proto__),
     priority: dart.fieldType(core.int),
     index: dart.fieldType(core.int),
+    referenceLine: dart.fieldType(core.int),
     axis: dart.fieldType(src__painting__basic_types.Axis)
   }));
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units", {
     "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart": LayoutGrid__src__Util__layout_grid_private_units
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart"],"names":[],"mappings":";;;;;;;;IAMM;;;;;;IACA;;;;;;IACC;;;;;;;;QAJY;IAGb,cAAQ;IACP;IAJY;;EAAU","file":"layout_grid_private_units.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units.dart"],"names":[],"mappings":";;;;;;;;IAMM;;;;;;IACA;;;;;;IACA;;;;;;IACC;;;;;;;;QALY;QAAe;IAG5B,cAAQ;IAEP;IALY;IAAe;;EAAe","file":"layout_grid_private_units.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__Util__layout_grid_private_units: LayoutGrid__src__Util__layout_grid_private_units

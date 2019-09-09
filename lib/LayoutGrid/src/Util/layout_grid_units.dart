@@ -4,9 +4,10 @@ class LayoutPixel extends LayoutUnit {
   LayoutPixel({
     this.pixels = 0.0,
     int priority = 0,
+    int referenceLine = -1,
   }) : assert(
     pixels != null,
-  ), super(priority: priority);
+  ), super(priority: priority, referenceLine: referenceLine);
 
   double pixels;
 
@@ -19,9 +20,10 @@ class LayoutPercentage extends LayoutUnit {
   LayoutPercentage({
     this.percentage = 0.0,
     int priority = 0,
+    int referenceLine = -1,
   }) : assert(
     percentage >= 0.0,
-  ), super(priority: priority);
+  ), super(priority: priority, referenceLine: referenceLine);
 
   double percentage;
 
@@ -34,9 +36,10 @@ class LayoutFraction extends LayoutUnit {
   LayoutFraction({
     this.fraction = 0,
     int priority = 0,
+    int referenceLine = -1,
   }) : assert(
     fraction != null,
-  ), super(priority: priority);
+  ), super(priority: priority, referenceLine: referenceLine);
 
   int fraction;
 
@@ -51,10 +54,11 @@ class LayoutMinMax extends LayoutUnit {
     this.maxUnit,
     this.unit,
     int priority = 0,
+    int referenceLine = -1,
     this.subPriority = 0,
   }) : assert(
     !(minUnit is LayoutFraction && maxUnit is LayoutFraction),
-  ), super(priority: priority);
+  ), super(priority: priority, referenceLine: referenceLine);
 
   LayoutUnit unit,minUnit, maxUnit;
   int subPriority;
@@ -65,10 +69,11 @@ class LayoutDependent extends LayoutUnit {
     this.line,
     this.multiplicator = 1.0,
     int priority = 0,
+    int referenceLine = -1,
   }) : assert(
     line != null,
     multiplicator != null,
-  ), super(priority: priority);
+  ), super(priority: priority, referenceLine: referenceLine);
 
   int line;
   double multiplicator;

@@ -8,31 +8,44 @@
         ]
     },
     {
-        "family": "ostrich",
+        "family": "Raleway",
         "fonts": [
             {
-                "asset": "./ostrich-sans-black.ttf",
+                "asset": "./Raleway-Bold.ttf",
                 "weight": 700
             },
             {
-                "asset": "./ostrich-sans-dashed.ttf",
+                "asset": "./Raleway-SemiBold.ttf",
                 "weight": 600
             },
             {
-                "asset": "./ostrich-sans-light.ttf",
-                "weight": 300
-            },
-            {
-                "asset": "./ostrich-sans-rounded.ttf",
+                "asset": "./Raleway-Regular.ttf",
                 "weight": 500
             },
             {
-                "asset": "./ostrich-sans-regular.ttf",
+                "asset": "./Raleway-Medium.ttf",
                 "weight": 400
             },
             {
-                "asset": "./ostrich-sans-inline-regular.ttf",
+                "asset": "./Raleway-Light.ttf",
+                "weight": 300
+            },
+            {
+                "asset": "./Raleway-ExtraLight.ttf",
                 "weight": 200
+            },
+            {
+                "asset": "./Raleway-Thin.ttf",
+                "weight": 100
+            }
+        ]
+    },
+    {
+        "family": "Chilanka",
+        "fonts": [
+            {
+                "asset": "./Chilanka-Regular.ttf",
+                "weight": 500
             }
         ]
     }

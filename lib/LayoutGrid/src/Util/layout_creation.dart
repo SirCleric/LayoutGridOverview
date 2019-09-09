@@ -36,7 +36,7 @@ class Layout {
       }
     }
 
-    return _calculateFinalList(cols, _widthSizes, _heightSizes);
+    return _calculateFinalList(cols, rows, _widthSizes, _heightSizes);
   }
 
   static Map<String, double> getWidgetParameters(int index, List<LayoutGridCouple> couples, List<double> cols, List<double> rows) {
@@ -292,7 +292,7 @@ class Layout {
     return _sumOfFractions;
   }
 
-  static List<double> _calculateFinalList(List<LayoutUnit> cols, List<double> widthSizes, List<double> heightSizes) {
+  static List<double> _calculateFinalList(List<LayoutUnit> cols,List<LayoutUnit> rows, List<double> widthSizes, List<double> heightSizes) {
 
     List<double> _finalList = List<double>(widthSizes.length);
     int colsLenght = cols.length;
@@ -302,11 +302,22 @@ class Layout {
     for(int _i=0; _i < _finalList.length; _i++) {
 
       if (_i < colsLenght) {
-        _finalList[_i] = widthPosition + widthSizes[_i];
-        widthPosition += widthSizes[_i];
+        try{
+        (cols[_i].referenceLine == -1) ? _finalList[_i] = widthPosition + widthSizes[_i] : _finalList[_i] = _finalList[cols[_i].referenceLine] + widthSizes[_i];
+        
+        (cols[_i].referenceLine == -1) ? widthPosition += widthSizes[_i] : widthPosition += _finalList[_i] - _finalList[_i - 1];
+        }catch(e) {
+          print("cols");
+        }
       }else {
-        _finalList[_i] = heightPosition + heightSizes[_i - colsLenght];
-        heightPosition += heightSizes[_i - colsLenght];
+        try {
+        
+          (rows[_i - colsLenght].referenceLine == -1) ? _finalList[_i] = heightPosition + heightSizes[_i - colsLenght] : _finalList[_i] = _finalList[rows[_i - colsLenght].referenceLine + colsLenght] + heightSizes[_i - colsLenght];
+        
+          (rows[_i - colsLenght].referenceLine == -1) ? heightPosition += heightSizes[_i - colsLenght] : heightPosition += _finalList[_i] - _finalList[_i - 1];
+        }catch(e) {
+          print("rows");
+        }
       }
     }
 

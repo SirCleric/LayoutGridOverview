@@ -14,6 +14,8 @@ class MainLayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
 
+        print("width: " + constraints.maxWidth.toString());
+
         return Stack(
           children: <Widget> [
             SingleChildScrollView(
@@ -26,9 +28,10 @@ class MainLayout extends StatelessWidget {
 
                 columns: [
                   LayoutPixel(pixels: 0),
-                  LayoutFraction(fraction: 1),
-                  LayoutFraction(fraction: 8),
-                  LayoutFraction(fraction: 1),
+                  LayoutFraction(fraction: 1, priority: 1),
+                  LayoutFraction(fraction: 5, priority: 1),
+                  LayoutFraction(fraction: 3, priority: 1),
+                  LayoutFraction(fraction: 1, priority: 1),
                 ],
 
                 rows: [
@@ -50,21 +53,27 @@ class MainLayout extends StatelessWidget {
                 couples: [
                   LayoutGridCouple(
                     widget: Section(text: "Main",color: Colors.redAccent,modelKey: "Main",),
-                    col0: 0,col1: 3,
+                    col0: 0,col1: 4,
                     row0: 0, row1: 1,
                     modelKey: "Main"
                   ),
                   LayoutGridCouple(
                     widget: Section(text: "Description",color: Colors.tealAccent,modelKey: "Description",),
-                    col0: 1,col1: 2,
+                    col0: 1,col1: 3,
                     row0: 2, row1: 3,
                     modelKey: "Description"
                   ),
                   LayoutGridCouple(
-                    widget: Grid(),
+                    widget: Section(text: "Contacts",color: Colors.teal,modelKey: "Contacts",),
+                    col0: 1,col1: 3,
+                    row0: 3, row1: 4,
+                    modelKey: "Contacts"
+                  ),
+                  LayoutGridCouple(
+                    widget: LeftGrid(),
                     col0: 1,col1: 2,
                     row0: 7, row1: 8,
-                    modelKey: "Grid"
+                    modelKey: "LeftGrid"
                   ),
                 ],
               ),
@@ -72,6 +81,72 @@ class MainLayout extends StatelessWidget {
           ]
         );
       },
+    );
+  }
+}
+
+
+//0.625, 0.5625
+
+class LeftGrid extends StatelessWidget {
+  LeftGrid({Key key}) : super(key: key);
+
+  InheritedLayoutModel model;
+  final String modelKey = "LeftGrid";
+
+  @override
+  Widget build(BuildContext context) {
+
+    model = InheritedLayoutModel.of(context);
+
+    return Container(
+
+      child: LayoutGrid(
+        maxWidth: model.getWidth(modelKey),
+        maxHeight: model.getHeight(modelKey),
+
+        layoutModel: InheritedLayoutModel.of(context),
+
+        columns: [
+          LayoutPixel(pixels: 0 , priority: 1),
+          LayoutPixel(pixels: model.getWidth(modelKey),priority: 1)
+        ],
+
+        rows: [
+          LayoutPixel(pixels: 0),
+          LayoutDependent(line: 1, multiplicator: 1.0),
+          LayoutDependent(line: 1, multiplicator: 0.625),
+          LayoutDependent(line: 1, multiplicator: 0.625),
+          LayoutDependent(line: 1, multiplicator: 0.625),
+        ],
+
+        couples: [
+          LayoutGridCouple(
+            widget: Section(text: "1", color: Colors.blueGrey, modelKey: "1",),
+            col0: 0, col1: 1,
+            row0: 0, row1: 1,
+            modelKey: "1"
+          ),
+          LayoutGridCouple(
+            widget: Section(text: "2", color: Colors.blueGrey, modelKey: "2",),
+            col0: 0, col1: 1,
+            row0: 1, row1: 2,
+            modelKey: "2"
+          ),
+          LayoutGridCouple(
+            widget: Section(text: "3", color: Colors.blueGrey, modelKey: "3",),
+            col0: 0, col1: 1,
+            row0: 2, row1: 3,
+            modelKey: "3"
+          ),
+          LayoutGridCouple(
+            widget: Section(text: "4", color: Colors.blueGrey, modelKey: "4",),
+            col0: 0, col1: 1,
+            row0: 3, row1: 4,
+            modelKey: "4"
+          ),
+        ],
+      ),
     );
   }
 }
@@ -104,76 +179,6 @@ class Section extends StatelessWidget {
           color: Colors.white,
           fontSize: 64,
         ),
-      ),
-    );
-  }
-}
-
-class Grid extends StatelessWidget {
-  Grid({Key key}) : super(key: key);
-
-  InheritedLayoutModel model;
-  final String modelKey = "Grid";
-
-  @override
-  Widget build(BuildContext context) {
-
-    model = InheritedLayoutModel.of(context);
-
-    return Container(
-
-      child: LayoutGrid(
-        maxWidth: model.getWidth(modelKey),
-        maxHeight: model.getHeight(modelKey),
-
-        layoutModel: InheritedLayoutModel.of(context),
-
-        columns: [
-          LayoutPixel(pixels: 0 , priority: 1),
-          LayoutFraction(fraction: 5, priority: 1),
-          LayoutFraction(fraction: 3, priority: 1),
-        ],
-
-        rows: [
-          LayoutPixel(pixels: 0),
-          LayoutPixel(pixels: 100),
-          LayoutDependent(line: 2, multiplicator: 0.5625), // 16 : 9
-          LayoutDependent(line: 1, referenceLine: 0, multiplicator: 0.5625), // 16 : 9
-          LayoutDependent(line: 2, referenceLine: 1, multiplicator: 1), // 1 : 1
-          LayoutDependent(line: 1, referenceLine: 2, multiplicator: 1), // 1 : 1
-          LayoutDependent(line: 2, referenceLine: 3, multiplicator: 0.5625), // 16 : 9
-          LayoutDependent(line: 2, referenceLine: 5, multiplicator: 0.625), // 16 : 10
-          LayoutDependent(line: 1, referenceLine: 4, multiplicator: 0.625), // 16 : 10
-          LayoutDependent(line: 2, referenceLine: 6, multiplicator: 0.5625), // 16 : 9
-          LayoutDependent(line: 1, referenceLine: 7, multiplicator: 0.625), // 16 : 10
-        ],
-
-        couples: [
-          LayoutGridCouple(
-            widget: Section(text: "1", color: Colors.blueGrey, modelKey: "1",),
-            col0: 0, col1: 1,
-            row0: 0, row1: 2,
-            modelKey: "1"
-          ),
-          LayoutGridCouple(
-            widget: Section(text: "2", color: Colors.blueGrey, modelKey: "2",),
-            col0: 1, col1: 2,
-            row0: 0, row1: 1,
-            modelKey: "2"
-          ),
-          LayoutGridCouple(
-            widget: Section(text: "3", color: Colors.blueGrey, modelKey: "3",),
-            col0: 0, col1: 1,
-            row0: 2, row1: 4,
-            modelKey: "3"
-          ),
-          LayoutGridCouple(
-            widget: Section(text: "4", color: Colors.blueGrey, modelKey: "4",),
-            col0: 1, col1: 2,
-            row0: 1, row1: 3,
-            modelKey: "4"
-          ),
-        ],
       ),
     );
   }

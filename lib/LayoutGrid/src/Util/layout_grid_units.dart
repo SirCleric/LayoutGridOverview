@@ -1,13 +1,14 @@
+import 'package:flutter_web/material.dart';
+
 import 'layout_grid_private_units.dart';
 
 class LayoutPixel extends LayoutUnit {
   LayoutPixel({
     this.pixels = 0.0,
     int priority = 0,
-    int referenceLine = -1,
   }) : assert(
     pixels != null,
-  ), super(priority: priority, referenceLine: referenceLine);
+  ), super(priority: priority);
 
   double pixels;
 
@@ -20,10 +21,9 @@ class LayoutPercentage extends LayoutUnit {
   LayoutPercentage({
     this.percentage = 0.0,
     int priority = 0,
-    int referenceLine = -1,
   }) : assert(
     percentage >= 0.0,
-  ), super(priority: priority, referenceLine: referenceLine);
+  ), super(priority: priority);
 
   double percentage;
 
@@ -36,10 +36,9 @@ class LayoutFraction extends LayoutUnit {
   LayoutFraction({
     this.fraction = 0,
     int priority = 0,
-    int referenceLine = -1,
   }) : assert(
     fraction != null,
-  ), super(priority: priority, referenceLine: referenceLine);
+  ), super(priority: priority);
 
   int fraction;
 
@@ -54,11 +53,10 @@ class LayoutMinMax extends LayoutUnit {
     this.maxUnit,
     this.unit,
     int priority = 0,
-    int referenceLine = -1,
     this.subPriority = 0,
   }) : assert(
     !(minUnit is LayoutFraction && maxUnit is LayoutFraction),
-  ), super(priority: priority, referenceLine: referenceLine);
+  ), super(priority: priority);
 
   LayoutUnit unit,minUnit, maxUnit;
   int subPriority;
@@ -68,15 +66,16 @@ class LayoutDependent extends LayoutUnit {
   LayoutDependent({
     this.line,
     this.multiplicator = 1.0,
+    this.lineAxis = Axis.vertical,
     int priority = 0,
-    int referenceLine = -1,
   }) : assert(
     line != null,
     multiplicator != null,
-  ), super(priority: priority, referenceLine: referenceLine);
+  ), super(priority: priority);
 
   int line;
   double multiplicator;
+  Axis lineAxis;
 
   double getValue(List<double> list) {
     return list[line] * multiplicator;

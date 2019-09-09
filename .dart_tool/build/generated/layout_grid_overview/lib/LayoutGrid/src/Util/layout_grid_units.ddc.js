@@ -1,9 +1,10 @@
-define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units'], function(dart_sdk, layout_grid_private_units) {
+define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_private_units', 'packages/flutter_web/src/animation/animation'], function(dart_sdk, layout_grid_private_units, animation) {
   'use strict';
   const core = dart_sdk.core;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
   const LayoutGrid__src__Util__layout_grid_private_units = layout_grid_private_units.LayoutGrid__src__Util__layout_grid_private_units;
+  const src__painting__basic_types = animation.src__painting__basic_types;
   const LayoutGrid__src__Util__layout_grid_units = Object.create(dart.library);
   const $_get = dartx._get;
   LayoutGrid__src__Util__layout_grid_units.LayoutPixel = class LayoutPixel extends LayoutGrid__src__Util__layout_grid_private_units.LayoutUnit {
@@ -20,10 +21,9 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   (LayoutGrid__src__Util__layout_grid_units.LayoutPixel.new = function(opts) {
     let pixels = opts && 'pixels' in opts ? opts.pixels : 0.0;
     let priority = opts && 'priority' in opts ? opts.priority : 0;
-    let referenceLine = opts && 'referenceLine' in opts ? opts.referenceLine : -1;
     this[pixels$] = pixels;
-    if (!(pixels != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 9, 5, "pixels != null");
-    LayoutGrid__src__Util__layout_grid_units.LayoutPixel.__proto__.new.call(this, {priority: priority, referenceLine: referenceLine});
+    if (!(pixels != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 10, 5, "pixels != null");
+    LayoutGrid__src__Util__layout_grid_units.LayoutPixel.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutPixel.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_units.LayoutPixel);
@@ -51,10 +51,9 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   (LayoutGrid__src__Util__layout_grid_units.LayoutPercentage.new = function(opts) {
     let percentage = opts && 'percentage' in opts ? opts.percentage : 0.0;
     let priority = opts && 'priority' in opts ? opts.priority : 0;
-    let referenceLine = opts && 'referenceLine' in opts ? opts.referenceLine : -1;
     this[percentage$] = percentage;
     if (!(dart.notNull(percentage) >= 0.0)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 25, 5, "percentage >= 0.0");
-    LayoutGrid__src__Util__layout_grid_units.LayoutPercentage.__proto__.new.call(this, {priority: priority, referenceLine: referenceLine});
+    LayoutGrid__src__Util__layout_grid_units.LayoutPercentage.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutPercentage.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_units.LayoutPercentage);
@@ -82,10 +81,9 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   (LayoutGrid__src__Util__layout_grid_units.LayoutFraction.new = function(opts) {
     let fraction = opts && 'fraction' in opts ? opts.fraction : 0;
     let priority = opts && 'priority' in opts ? opts.priority : 0;
-    let referenceLine = opts && 'referenceLine' in opts ? opts.referenceLine : -1;
     this[fraction$] = fraction;
-    if (!(fraction != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 41, 5, "fraction != null");
-    LayoutGrid__src__Util__layout_grid_units.LayoutFraction.__proto__.new.call(this, {priority: priority, referenceLine: referenceLine});
+    if (!(fraction != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 40, 5, "fraction != null");
+    LayoutGrid__src__Util__layout_grid_units.LayoutFraction.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutFraction.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_units.LayoutFraction);
@@ -130,14 +128,13 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
     let maxUnit = opts && 'maxUnit' in opts ? opts.maxUnit : null;
     let unit = opts && 'unit' in opts ? opts.unit : null;
     let priority = opts && 'priority' in opts ? opts.priority : 0;
-    let referenceLine = opts && 'referenceLine' in opts ? opts.referenceLine : -1;
     let subPriority = opts && 'subPriority' in opts ? opts.subPriority : 0;
     this[minUnit$] = minUnit;
     this[maxUnit$] = maxUnit;
     this[unit$] = unit;
     this[subPriority$] = subPriority;
-    if (!!(LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(minUnit) && LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(maxUnit))) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 60, 5, "!(minUnit is LayoutFraction && maxUnit is LayoutFraction)");
-    LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.__proto__.new.call(this, {priority: priority, referenceLine: referenceLine});
+    if (!!(LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(minUnit) && LayoutGrid__src__Util__layout_grid_units.LayoutFraction.is(maxUnit))) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 58, 5, "!(minUnit is LayoutFraction && maxUnit is LayoutFraction)");
+    LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutMinMax.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_units.LayoutMinMax);
@@ -166,6 +163,12 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
     set multiplicator(value) {
       this[multiplicator$] = value;
     }
+    get lineAxis() {
+      return this[lineAxis$];
+    }
+    set lineAxis(value) {
+      this[lineAxis$] = value;
+    }
     getValue(list) {
       return dart.notNull(list[$_get](this.line)) * dart.notNull(this.multiplicator);
     }
@@ -173,17 +176,19 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   (LayoutGrid__src__Util__layout_grid_units.LayoutDependent.new = function(opts) {
     let line = opts && 'line' in opts ? opts.line : null;
     let multiplicator = opts && 'multiplicator' in opts ? opts.multiplicator : 1.0;
+    let lineAxis = opts && 'lineAxis' in opts ? opts.lineAxis : src__painting__basic_types.Axis.vertical;
     let priority = opts && 'priority' in opts ? opts.priority : 0;
-    let referenceLine = opts && 'referenceLine' in opts ? opts.referenceLine : -1;
     this[line$] = line;
     this[multiplicator$] = multiplicator;
-    if (!(line != null)) dart.assertFailed(multiplicator != null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 74, 5, "line != null");
-    LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__.new.call(this, {priority: priority, referenceLine: referenceLine});
+    this[lineAxis$] = lineAxis;
+    if (!(line != null)) dart.assertFailed(multiplicator != null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 72, 5, "line != null");
+    LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutDependent.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_units.LayoutDependent);
   const line$ = Symbol("LayoutDependent.line");
   const multiplicator$ = Symbol("LayoutDependent.multiplicator");
+  const lineAxis$ = Symbol("LayoutDependent.lineAxis");
   dart.setMethodSignature(LayoutGrid__src__Util__layout_grid_units.LayoutDependent, () => ({
     __proto__: dart.getMethods(LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__),
     getValue: dart.fnType(core.double, [core.List$(core.double)])
@@ -192,12 +197,13 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   dart.setFieldSignature(LayoutGrid__src__Util__layout_grid_units.LayoutDependent, () => ({
     __proto__: dart.getFields(LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__),
     line: dart.fieldType(core.int),
-    multiplicator: dart.fieldType(core.double)
+    multiplicator: dart.fieldType(core.double),
+    lineAxis: dart.fieldType(src__painting__basic_types.Axis)
   }));
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units", {
     "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart": LayoutGrid__src__Util__layout_grid_units
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart"],"names":[],"mappings":";;;;;;;;;IAWS;;;;;;;AAGL,YAAO;IACT;;;QAXO,kDAAS;QACV,wDAAW;QACX,uEAAgB,CAAC;IAFhB;UAIL,MAAM,IAAI;AACT,6FAAgB,QAAQ,iBAAiB,aAAa;;EAAC;;;;;;;;;;;;;IAkBnD;;;;;;aAEgB;AACrB,YAAkB,AAAM,cAAjB,mBAAa,mBAAM,KAAK;IACjC;;;QAXO,8DAAa;QACd,wDAAW;QACX,uEAAgB,CAAC;IAFhB;UAIM,aAAX,UAAU,KAAI;AACb,kGAAgB,QAAQ,iBAAiB,aAAa;;EAAC;;;;;;;;;;;;;IAkBtD;;;;;;aAEgB,gBAAuB;AACzC,YAAgB,AAAiB,cAA1B,8BAAW,cAAc,iBAAG,SAAS;IAC9C;;;QAXO,wDAAW;QACZ,wDAAW;QACX,uEAAgB,CAAC;IAFhB;UAIL,QAAQ,IAAI;AACX,gGAAgB,QAAQ,iBAAiB,aAAa;;EAAC;;;;;;;;;;;;;IAqB/C;;;;;;IAAK;;;;;;IAAS;;;;;;IACrB;;;;;;;;QAXG;QACA;QACA;QACD,wDAAW;QACX,uEAAgB,CAAC;QAChB,iEAAc;IALd;IACA;IACA;IAGA;SAEL,EAAU,2DAAR,OAAO,KAA8B,2DAAR,OAAO;AACrC,8FAAgB,QAAQ,iBAAiB,aAAa;;EAAC;;;;;;;;;;;;;;;IAiBtD;;;;;;IACG;;;;;;aAEsB;AAC3B,YAAkB,cAAX,AAAI,IAAA,QAAC,2BAAQ;IACtB;;;QAdO;QACA,uEAAgB;QACjB,wDAAW;QACX,uEAAgB,CAAC;IAHhB;IACA;UAIL,IAAI,IAAI,yBACR,aAAa,IAAI;AAChB,iGAAgB,QAAQ,iBAAiB,aAAa;;EAAC","file":"layout_grid_units.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart"],"names":[],"mappings":";;;;;;;;;;IAYS;;;;;;;AAGL,YAAO;IACT;;;QAVO,kDAAS;QACV,wDAAW;IADV;UAGL,MAAM,IAAI;AACT,6FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAiBrB;;;;;;aAEgB;AACrB,YAAkB,AAAM,cAAjB,mBAAa,mBAAM,KAAK;IACjC;;;QAVO,8DAAa;QACd,wDAAW;IADV;UAGM,aAAX,UAAU,KAAI;AACb,kGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAiBxB;;;;;;aAEgB,gBAAuB;AACzC,YAAgB,AAAiB,cAA1B,8BAAW,cAAc,iBAAG,SAAS;IAC9C;;;QAVO,wDAAW;QACZ,wDAAW;IADV;UAGL,QAAQ,IAAI;AACX,gGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAoBjB;;;;;;IAAK;;;;;;IAAS;;;;;;IACrB;;;;;;;;QAVG;QACA;QACA;QACD,wDAAW;QACV,iEAAc;IAJd;IACA;IACA;IAEA;SAEL,EAAU,2DAAR,OAAO,KAA8B,2DAAR,OAAO;AACrC,8FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;;;IAiBxB;;;;;;IACG;;;;;;IACF;;;;;;aAEwB;AAC3B,YAAkB,cAAX,AAAI,IAAA,QAAC,2BAAQ;IACtB;;;QAfO;QACA,uEAAgB;QAChB,wDAAgB;QACjB,wDAAW;IAHV;IACA;IACA;UAGL,IAAI,IAAI,yBACR,aAAa,IAAI;AAChB,iGAAgB,QAAQ;;EAAC","file":"layout_grid_units.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__Util__layout_grid_units: LayoutGrid__src__Util__layout_grid_units

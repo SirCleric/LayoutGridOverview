@@ -2,10 +2,9 @@ import 'package:flutter_web/material.dart';
 
 class LayoutUnit{
 
-  LayoutUnit({this.priority, this.referenceLine});
+  LayoutUnit({this.priority});
 
   int priority;
   int index = 0;
-  int referenceLine = -1;
   Axis axis;
 }

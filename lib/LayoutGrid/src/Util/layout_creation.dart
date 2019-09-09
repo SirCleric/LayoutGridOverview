@@ -12,7 +12,7 @@ class Layout {
     double _freeHeight = height;
 
     List<double> _widthSizes = _initSizesListWithDefaultValue(cols.length + rows.length);
-    List<double> _heightSizes = _initSizesListWithDefaultValue(rows.length + rows.length);
+    List<double> _heightSizes = _initSizesListWithDefaultValue(cols.length + rows.length);
 
     _setIndexAndAxis(cols, Axis.vertical);
     _setIndexAndAxis(rows, Axis.horizontal);

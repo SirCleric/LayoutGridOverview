@@ -31,7 +31,7 @@ define(['dart_sdk', 'packages/flutter_web/src/animation/animation', 'packages/la
       let _freeWidth = width;
       let _freeHeight = height;
       let _widthSizes = LayoutGrid__src__Util__layout_creation.Layout._initSizesListWithDefaultValue(dart.notNull(cols[$length]) + dart.notNull(rows[$length]));
-      let _heightSizes = LayoutGrid__src__Util__layout_creation.Layout._initSizesListWithDefaultValue(dart.notNull(rows[$length]) + dart.notNull(rows[$length]));
+      let _heightSizes = LayoutGrid__src__Util__layout_creation.Layout._initSizesListWithDefaultValue(dart.notNull(cols[$length]) + dart.notNull(rows[$length]));
       LayoutGrid__src__Util__layout_creation.Layout._setIndexAndAxis(cols, src__painting__basic_types.Axis.vertical);
       LayoutGrid__src__Util__layout_creation.Layout._setIndexAndAxis(rows, src__painting__basic_types.Axis.horizontal);
       let _joinedList = LayoutGrid__src__Util__layout_creation.Layout._initJoinedAndSortedList(cols, rows);

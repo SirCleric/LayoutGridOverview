@@ -157,11 +157,11 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
     set line(value) {
       this[line$] = value;
     }
-    get multiplicator() {
-      return this[multiplicator$];
+    get function() {
+      return this[func];
     }
-    set multiplicator(value) {
-      this[multiplicator$] = value;
+    set function(value) {
+      this[func] = value;
     }
     get lineAxis() {
       return this[lineAxis$];
@@ -170,24 +170,24 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
       this[lineAxis$] = value;
     }
     getValue(list) {
-      return dart.notNull(list[$_get](this.line)) * dart.notNull(this.multiplicator);
+      return this.function(list[$_get](this.line));
     }
   };
   (LayoutGrid__src__Util__layout_grid_units.LayoutDependent.new = function(opts) {
     let line = opts && 'line' in opts ? opts.line : null;
-    let multiplicator = opts && 'multiplicator' in opts ? opts.multiplicator : 1.0;
     let lineAxis = opts && 'lineAxis' in opts ? opts.lineAxis : src__painting__basic_types.Axis.vertical;
+    let function$0 = opts && 'function' in opts ? opts.function : null;
     let priority = opts && 'priority' in opts ? opts.priority : 0;
     this[line$] = line;
-    this[multiplicator$] = multiplicator;
     this[lineAxis$] = lineAxis;
-    if (!(line != null)) dart.assertFailed(multiplicator != null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 72, 5, "line != null");
+    this[func] = function$0;
+    if (!(line != null)) dart.assertFailed(null, "org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart", 72, 5, "line != null");
     LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__.new.call(this, {priority: priority});
     ;
   }).prototype = LayoutGrid__src__Util__layout_grid_units.LayoutDependent.prototype;
   dart.addTypeTests(LayoutGrid__src__Util__layout_grid_units.LayoutDependent);
   const line$ = Symbol("LayoutDependent.line");
-  const multiplicator$ = Symbol("LayoutDependent.multiplicator");
+  const func = Symbol("LayoutDependent.function");
   const lineAxis$ = Symbol("LayoutDependent.lineAxis");
   dart.setMethodSignature(LayoutGrid__src__Util__layout_grid_units.LayoutDependent, () => ({
     __proto__: dart.getMethods(LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__),
@@ -197,13 +197,13 @@ define(['dart_sdk', 'packages/layout_grid_overview/LayoutGrid/src/Util/layout_gr
   dart.setFieldSignature(LayoutGrid__src__Util__layout_grid_units.LayoutDependent, () => ({
     __proto__: dart.getFields(LayoutGrid__src__Util__layout_grid_units.LayoutDependent.__proto__),
     line: dart.fieldType(core.int),
-    multiplicator: dart.fieldType(core.double),
+    function: dart.fieldType(dart.fnType(core.double, [core.double])),
     lineAxis: dart.fieldType(src__painting__basic_types.Axis)
   }));
   dart.trackLibraries("packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units", {
     "package:layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart": LayoutGrid__src__Util__layout_grid_units
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart"],"names":[],"mappings":";;;;;;;;;;IAYS;;;;;;;AAGL,YAAO;IACT;;;QAVO,kDAAS;QACV,wDAAW;IADV;UAGL,MAAM,IAAI;AACT,6FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAiBrB;;;;;;aAEgB;AACrB,YAAkB,AAAM,cAAjB,mBAAa,mBAAM,KAAK;IACjC;;;QAVO,8DAAa;QACd,wDAAW;IADV;UAGM,aAAX,UAAU,KAAI;AACb,kGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAiBxB;;;;;;aAEgB,gBAAuB;AACzC,YAAgB,AAAiB,cAA1B,8BAAW,cAAc,iBAAG,SAAS;IAC9C;;;QAVO,wDAAW;QACZ,wDAAW;IADV;UAGL,QAAQ,IAAI;AACX,gGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAoBjB;;;;;;IAAK;;;;;;IAAS;;;;;;IACrB;;;;;;;;QAVG;QACA;QACA;QACD,wDAAW;QACV,iEAAc;IAJd;IACA;IACA;IAEA;SAEL,EAAU,2DAAR,OAAO,KAA8B,2DAAR,OAAO;AACrC,8FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;;;IAiBxB;;;;;;IACG;;;;;;IACF;;;;;;aAEwB;AAC3B,YAAkB,cAAX,AAAI,IAAA,QAAC,2BAAQ;IACtB;;;QAfO;QACA,uEAAgB;QAChB,wDAAgB;QACjB,wDAAW;IAHV;IACA;IACA;UAGL,IAAI,IAAI,yBACR,aAAa,IAAI;AAChB,iGAAgB,QAAQ;;EAAC","file":"layout_grid_units.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["org-dartlang-app:///packages/layout_grid_overview/LayoutGrid/src/Util/layout_grid_units.dart"],"names":[],"mappings":";;;;;;;;;;IAYS;;;;;;;AAGL,YAAO;IACT;;;QAVO,kDAAS;QACV,wDAAW;IADV;UAGL,MAAM,IAAI;AACT,6FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAiBrB;;;;;;aAEgB;AACrB,YAAkB,AAAM,cAAjB,mBAAa,mBAAM,KAAK;IACjC;;;QAVO,8DAAa;QACd,wDAAW;IADV;UAGM,aAAX,UAAU,KAAI;AACb,kGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAiBxB;;;;;;aAEgB,gBAAuB;AACzC,YAAgB,AAAiB,cAA1B,8BAAW,cAAc,iBAAG,SAAS;IAC9C;;;QAVO,wDAAW;QACZ,wDAAW;IADV;UAGL,QAAQ,IAAI;AACX,gGAAgB,QAAQ;;EAAC;;;;;;;;;;;;;IAoBjB;;;;;;IAAK;;;;;;IAAS;;;;;;IACrB;;;;;;;;QAVG;QACA;QACA;QACD,wDAAW;QACV,iEAAc;IAJd;IACA;IACA;IAEA;SAEL,EAAU,2DAAR,OAAO,KAA8B,2DAAR,OAAO;AACrC,8FAAgB,QAAQ;;EAAC;;;;;;;;;;;;;;;IAgBxB;;;;;;IACoB;;;;;;IACnB;;;;;;aAEwB;AAC3B,YAAO,eAAS,AAAI,IAAA,QAAC;IACvB;;;QAdiB;QACV,wDAAgB;QACN;QACX,wDAAW;IAHA;IACV;IACU;UAGf,IAAI,IAAI;AACP,iGAAgB,QAAQ;;EAAC","file":"layout_grid_units.ddc.js"}');
   // Exports:
   return {
     LayoutGrid__src__Util__layout_grid_units: LayoutGrid__src__Util__layout_grid_units

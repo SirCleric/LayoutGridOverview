@@ -43,7 +43,7 @@ class MainLayout extends StatelessWidget {
                   LayoutPixel(pixels: 148), //Spacing
                   LayoutPixel(pixels: 72), //Work section title
                   LayoutPixel(pixels: 72), //Spacing
-                  LayoutPixel(pixels: constraints.maxHeight), //Grid
+                  LayoutDependent(line: 2, function: (double value) => value + value * 0.625 * 3), //Grid
                   LayoutPixel(pixels: 72), //Spacing
                   LayoutPixel(pixels: 72), //More Work
                   LayoutPercentage(percentage: 25), //Twitter user
@@ -114,10 +114,10 @@ class LeftGrid extends StatelessWidget {
 
         rows: [
           LayoutPixel(pixels: 0),
-          LayoutDependent(line: 1, multiplicator: 1.0),
-          LayoutDependent(line: 1, multiplicator: 0.625),
-          LayoutDependent(line: 1, multiplicator: 0.625),
-          LayoutDependent(line: 1, multiplicator: 0.625),
+          LayoutDependent(line: 1, function: (double value) => value),
+          LayoutDependent(line: 1, function: (double value) => value * 0.625),
+          LayoutDependent(line: 1, function: (double value) => value * 0.625),
+          LayoutDependent(line: 1, function: (double value) => value * 0.625),
         ],
 
         couples: [

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:layout_grid_overview/mainLayout.dart';
 
-import 'LayoutGrid/layout_grid.dart';
+import 'package:layout_grid/layout_grid.dart';
 
 void main() => runApp(MyApp());
 

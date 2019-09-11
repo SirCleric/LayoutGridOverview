@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:layout_grid_overview/mainLayout.dart';
 
 import 'LayoutGrid/layout_grid.dart';

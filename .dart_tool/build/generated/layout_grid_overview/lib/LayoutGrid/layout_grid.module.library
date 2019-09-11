@@ -1,1 +1,0 @@
-{"isEntrypoint":true,"deps":["layout_grid_overview|lib/LayoutGrid/src/layout_grid.dart","layout_grid_overview|lib/LayoutGrid/src/layout_grid_couple.dart","layout_grid_overview|lib/LayoutGrid/src/Util/inherited_layout_model.dart","layout_grid_overview|lib/LayoutGrid/src/Util/layout_grid_units.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}

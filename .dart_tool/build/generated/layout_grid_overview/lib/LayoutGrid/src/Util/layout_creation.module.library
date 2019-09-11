@@ -1,0 +1,1 @@
+{"isEntrypoint":true,"deps":["flutter_web|lib/material.dart","layout_grid_overview|lib/LayoutGrid/src/layout_grid_couple.dart","layout_grid_overview|lib/LayoutGrid/src/Util/layout_grid_private_units.dart","layout_grid_overview|lib/LayoutGrid/src/Util/layout_grid_units.dart"],"parts":[],"conditionalDeps":[],"sdkDeps":[],"hasMain":false}
